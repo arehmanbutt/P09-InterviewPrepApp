@@ -1,9 +1,5 @@
 # P09-InterviewPrepApp
 
-# Project: Interview Preparation App.
-
-     Group - 9
-
 Team:
 
 Abdul Samad - 26100314
