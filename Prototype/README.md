@@ -55,4 +55,8 @@ LIST OF REQUIREMENTS COMPLETED IN THE PROTOTYPE
 
 ## HOW TO ACCESS THE PROTOTYPE
 
+### Prototype-1
 ### https://interviewprep-two.vercel.app/
+
+### Prototype-2
+### https://ai-interviewprepapp.netlify.app/
