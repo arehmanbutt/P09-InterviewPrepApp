@@ -3,20 +3,9 @@ import fs from "fs/promises";
 import path from "path";
 import Question from "../models/Question.js";
 import Parameter from "../models/Parameter.js";
+import Interview from "../models/Interview.js";
 import { selectQuestions } from "../lib/selectQuestions.js";
 
-// const router = express.Router();
-
-// router.get('/extract-qas', async (req, res) => {
-//   try {
-//     const questions = await Question.find({}).sort({ 'rank_key.0': -1 }); // Sort by rank if needed
-//     res.json(questions);
-//   } catch (err) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
-
-// module.exports = router;
 const router = express.Router()
 
 // Import JSON file into MongoDB (idempotent upserts)
@@ -62,7 +51,6 @@ router.post('/import-qas', async (req, res) => {
   }
 })
 
-// Return all questions (sorted by rank_key[0] descending if exists)
 router.get('/extract-qas', async (req, res) => {
   try {
     const documents = await Question.find({}).sort({ 'rank_key.0': -1 }).lean()
@@ -71,22 +59,79 @@ router.get('/extract-qas', async (req, res) => {
     console.error('extract-qas error', err)
     return res.status(500).json({ message: 'server error' })
   }
-})
+});
+
+// router.post("/start", async (req, res) => {
+//   try {
+//     const { jobTitle, company, jobDescription } = req.body;
+
+//     const interview = new Interview({ jobTitle, company, jobDescription });
+//     await interview.save();
+
+//     res
+//       .status(201)
+//       .json({ message: "Interview created successfully", interview });
+//   } catch (error) {
+//     console.error("Error saving interview:", error);
+//     res.status(500).json({ message: "Failed to create interview", error });
+//   }
+// });
 
 router.post('/save-parameters', async (req, res) => {
   try {
-    const { jobTitle, company, jobDescription } = req.body;
+    const { jobTitle, company, jobDescription } = req.body ?? {}
 
-    const interview = new Parameter({ jobTitle, company, jobDescription });
-    await interview.save();
+    const missing = []
+    if (!jobTitle || String(jobTitle).trim() === '') missing.push('jobTitle')
+    if (!company || String(company).trim() === '') missing.push('company')
+    if (!jobDescription || String(jobDescription).trim() === '') missing.push('jobDescription')
 
-    res
-      .status(201)
-      .json({ message: "Parameters set successfully", interview });
+    if (missing.length > 0) {
+      return res.status(400).json({ ok: false, message: `Missing required fields: ${missing.join(', ')}` })
+    }
+
+    const parameter = new Parameter({ jobTitle, company, jobDescription })
+    await parameter.save()
+
+    const doc = new Interview({ title: jobTitle, company, description: jobDescription })
+    const selectedIds = await selectQuestions(jobTitle, jobDescription, 10)
+    doc.selectedQuestions = selectedIds
+    doc.currentIndex = 0
+    await doc.save()
+
+    return res.status(201).json({
+      ok: true,
+      message: 'Parameters set successfully',
+      id: doc._id.toString(),
+      parameters: parameter,
+      interview: doc,
+    })
   } catch (error) {
-    console.error("Error saving parameters:", error);
-    res.status(500).json({ message: "Failed to set parameters", error });
+    console.error('Error saving parameters:', error)
+    if (error?.name === 'ValidationError') {
+      const details = Object.keys(error.errors || {}).map(k => ({ field: k, message: error.errors[k].message }))
+      return res.status(400).json({ ok: false, message: 'Validation failed', details })
+    }
+    return res.status(500).json({ ok: false, message: 'Server error', error: String(error) })
   }
-});
-// module.exports = router
+})
+
+router.get('/:id/questions', async (req, res) => {
+  try {
+    const interview = await Interview.findById(req.params.id).lean()
+    if (!interview) return res.status(404).json({ ok: false, message: 'Interview not found' })
+
+    const ids = Array.isArray(interview.selectedQuestions) ? interview.selectedQuestions : []
+    if (ids.length === 0) return res.json({ ok: true, questions: [] })
+
+    const docs = await Question.find({ question_id: { $in: ids } }).lean()
+    const idToDoc = new Map(docs.map(d => [d.question_id, d]))
+    const ordered = ids.map(id => idToDoc.get(id)).filter(Boolean)
+    return res.json({ ok: true, questions: ordered })
+  } catch (err) {
+    console.error('GET /:id/questions error', err)
+    return res.status(500).json({ ok: false, error: String(err) })
+  }
+})
+
 export default router

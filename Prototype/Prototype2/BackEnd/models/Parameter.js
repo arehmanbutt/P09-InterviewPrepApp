@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 const { Schema } = mongoose;
 
-const parameterSchema = new Schema({
+const parameterSchema = Schema({
     jobTitle: { 
         type: String, 
         required: true 
@@ -16,4 +16,4 @@ const parameterSchema = new Schema({
     },
 });
 
-export default mongoose.model('Parameter', parameterSchema);
+export default mongoose.model('Parameter', parameterSchema)

@@ -80,29 +80,6 @@ const Hero: React.FC = () => {
       return navigate('/login')
     }
 
-    // try {
-    //   const token = await getToken?.({ template: 'session' }) // optional template
-    //   // call your protected API; example:
-    //   const res = await fetch(`${import.meta.env.VITE_API_URL}/api/interviews`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    //     },
-    //     body: JSON.stringify({ question: 'Start interview' }),
-    //   })
-
-    //   if (!res.ok) {
-    //     console.warn('Start interview API returned not ok', res.status, await res.text())
-    //     // handle errors or show UI message
-    //     return
-    //   }
-
-    //   const data = await res.json()
-    //   // navigate to interview session, etc.
-    // } catch (err) {
-    //   console.error('handleStart error', err)
-    // }
     navigate('/dashboard')
   }
 

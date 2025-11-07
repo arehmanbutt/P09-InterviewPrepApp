@@ -1,7 +1,8 @@
+// server/models/Interview.js
 import mongoose from 'mongoose'
 const { Schema } = mongoose;
 
-const AnswerSchema = new Schema({
+const AnswerSchema = Schema({
   question_id: Number,
   question_title: String,
   question_text: String,
@@ -10,7 +11,7 @@ const AnswerSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 })
 
-const InterviewSchema = new Schema({
+const InterviewSchema = Schema({
   title: { type: String, required: true },
   company: { type: String, required: true },
   description: { type: String, required: true },

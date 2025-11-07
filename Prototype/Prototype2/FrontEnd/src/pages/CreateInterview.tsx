@@ -92,7 +92,6 @@
 //   )
 // }
 // src/pages/CreateInterview.tsx
-// src/pages/CreateInterview.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
@@ -165,23 +164,17 @@ export default function CreateInterview(): JSX.Element {
       }
 
       // success
-      const interviewId = body?.interview._id ?? null;
-      console.log("Interview created, ID:", interviewId);
+      const interviewId = body?.id ?? null;
+      console.log("Received interview ID:", interviewId);
       console.log("Interview created successfully:", body);
 
       if (interviewId) {
         // Navigate to interview session page if id is returned
-        console.log("navigating")
-        // navigate(`/interview/${interviewId}`);
         navigate("/interview-summary", {
           state: { jobTitle, company, description: jobDescription },
         });
       } else {
-        // fallback to summary page with state
-        // navigate("/interview-summary", {
-        //   state: { jobTitle, company, description: jobDescription },
-        // });
-        setError("Error in creating interview. Please try again.");
+        setError("Error in creating interview");
       }
     } catch (err: any) {
       console.error("Error submitting interview:", err);
