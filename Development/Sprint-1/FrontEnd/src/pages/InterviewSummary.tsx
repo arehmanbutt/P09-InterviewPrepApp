@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
@@ -27,6 +27,7 @@ export default function InterviewSummary(): JSX.Element {
     const [description, setDescription] = useState<string>(state.description ?? "");
 
     const [questions, setQuestions] = useState<QuestionItem[]>([]);
+    const [answersMap, setAnswersMap] = useState<Record<string, string>>({});
     const [transcript, setTranscript] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [creating, setCreating] = useState(false);
@@ -36,6 +37,9 @@ export default function InterviewSummary(): JSX.Element {
 
     const [scriptStatus, setScriptStatus] = useState<'idle'|'found'|'loading'|'loaded'|'error'|'ready'|'timeout'>('idle');
     const [scriptError, setScriptError] = useState<string | null>(null);
+
+    const [overallScore, setOverallScore] = useState<number | null>(null);
+    const [scoreLoading, setScoreLoading] = useState(false);
 
 
     const scriptRef = useRef<HTMLScriptElement | null>(null);
@@ -47,7 +51,7 @@ export default function InterviewSummary(): JSX.Element {
         const headers: Record<string, string> = { "Content-Type": "application/json" };
         if (isLoaded && isSignedIn && getToken) {
         try {
-            const token = await getToken();
+            const token = await getToken({ template: "interview-backend" });
             if (token) headers["Authorization"] = `Bearer ${token}`;
         } catch (err) {
             console.warn("getToken failed", err);
@@ -57,7 +61,9 @@ export default function InterviewSummary(): JSX.Element {
     }
 
     async function ensureInterviewExists() {
+        console.log("Ensuring interview exists, current id:", interviewId);
         if (interviewId) return interviewId;
+
         setCreating(true);
         setError(null);
         try {
@@ -78,7 +84,7 @@ export default function InterviewSummary(): JSX.Element {
                 const msg = body?.message || `Server returned ${res.status}`;
                 throw new Error(msg);
             }
-            const id = body?.id ?? body?.interview?._id ?? body?.interview?.id;
+            const id = body?.interviewId || body?.id || body?.interview?._id;
             if (!id) throw new Error("Server did not return interview id");
             setInterviewId(String(id));
             return String(id);
@@ -94,17 +100,26 @@ export default function InterviewSummary(): JSX.Element {
     async function fetchSelectedQuestions(id: string) {
         setLoading(true);
         setError(null);
+        console.log("Fetching selected questions for interview id:", id);
         try {
             const headers = await getAuthHeaders();
             const res = await fetch(`${API}/api/interviews/${id}/questions`, { method: "GET", headers });
             const body = await res.json().catch(() => null);
+            
             if (!res.ok) {
                 throw new Error(body?.message || `Failed to fetch questions (${res.status})`);
             }
             if (!body || !Array.isArray(body.questions)) {
                 throw new Error("Invalid response for questions");
             }
-            setQuestions(body.questions);
+
+            const receivedAnswers = body.answersMap ?? {};
+            const normalized: Record<string, string> = {};
+            for (const k of Object.keys(receivedAnswers)) {
+                normalized[String(k)] = String(receivedAnswers[k] ?? '');
+            }
+            setAnswersMap(normalized);
+
             return body.questions;
         } catch (err: any) {
             console.error("fetchSelectedQuestions error", err);
@@ -127,11 +142,13 @@ export default function InterviewSummary(): JSX.Element {
             `${index + 1}. ${q.title} (ID: ${q.id}): ${q.text}`
         ).join('\n');
 
+        console.log('Prepared questions for widget context:', questionTexts.slice(0,3));
+
         const fullSystemPrompt = `
             You are an automated interview agent used only to run recorded mock technical interviews. Follow these rules exactly.
             
-            1) Greeting & permission — Always begin with one concise greeting and ask for permission to start, 
-            e.g. “Hello — thank you for joining. May I begin the interview now?” Wait for an explicit affirmative 
+            1) Greeting & permission — Always ask for permission to start, 
+            e.g. “Thank you for joining. May I begin the interview now?” Wait for an explicit affirmative 
             (“yes”, “please start”, “go ahead”, “sure”). If the candidate’s first reply is not explicit, ask once more. Proceed only after explicit permission.
             
             2) Authority of questions — You MUST ONLY ask the following questions in order. Do not invent, add, expand, ask about the 
@@ -147,10 +164,10 @@ export default function InterviewSummary(): JSX.Element {
             5) Skipping — If the candidate says “skip” or “pass”, acknowledge briefly (“Okay, skipping that question.”) and move on. 
             Allow returning to a skipped question only if the candidate explicitly asks to return after the remaining questions are completed.
             
-            6) Webhook / persistence — If webhook/event hooks are configured for the embed, emit an event at the end of each question 
-            turn with the candidate’s transcript and the question id. Also emit a final “interview.finished” event when done. 
-            (This is informational. The embed platform will send webhooks — ensure your server endpoint accepts them.)
-
+            6) Persistence — After receiving the full answer to each question (including any clarification or skip, and handling any interruptions by 
+            combining partial utterances into a complete response), call the 'save_question_transcript' tool with parameters: question_id (the ID from the list) 
+            and transcript (the candidate's full spoken answer as a single string).
+            
             7) Ending the interview — After receiving and acknowledging the answer to the last question (including any clarification), 
             immediately say exactly: “Interview complete. Thank you for your time.” Do not ask additional questions or continue the conversation. 
             End the session.
@@ -158,14 +175,15 @@ export default function InterviewSummary(): JSX.Element {
             IMPORTANT: Do not prompt for job info, role summary, or anything else outside the provided questions.
             `;
             
-        // 6) End command — If the candidate says “end interview”, “stop interview”, or “finish”, immediately stop the interview flow 
-        // and say exactly: “Interview complete. Thank you for your time.” Do not ask additional questions.
-        console.log('Building widget with embedded prompt:', { fullSystemPrompt, questionsList });
+            console.log('Building widget with embedded prompt:', { fullSystemPrompt, questionsList });
+        // 6) Webhook / persistence — If webhook/event hooks are configured for the embed, emit an event at the end of each question 
+        // turn with the candidate’s transcript and the question id. Also emit a final “interview.finished” event when done. 
+        // (This is informational. The embed platform will send webhooks — ensure your server endpoint accepts them.)
         // const stopPhrases = ['end interview', 'stop interview', 'finish', 'end']; //end added
 
         // The widget expects a `context` object — include your instructions and the question list there.
         // We set both a `system` key and an explicit `runtimeInstructions` key to be defensive.
-        return { fullSystemPrompt};
+        return { fullSystemPrompt };
     }
 
     function removeMountedWidgetElement() {
@@ -248,7 +266,7 @@ export default function InterviewSummary(): JSX.Element {
 
                 if (interviewId) {
                     try {
-                        widgetEl.setAttribute("metadata", JSON.stringify({ interviewId }));
+                        widgetEl.setAttribute("dynamic-variables", JSON.stringify({ interviewId: interviewId }));
                         (widgetEl as any).metadata = { interviewId };
                     } catch {}
                 }
@@ -413,6 +431,59 @@ export default function InterviewSummary(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    async function fetchOverallScoreOnce(interviewId: string) {
+        try {
+            const headers = await getAuthHeaders();
+
+            const res = await fetch(`${API}/api/webhooks/transcripts/${interviewId}`, {
+                method: "GET",
+                headers,
+            });
+
+            const body = await res.json().catch(() => null);
+
+            if (!res.ok) return null;
+
+            return body?.transcript?.overallScore ?? null;
+        } catch (err) {
+            console.error("polling score error:", err);
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        if (!interviewId) return;
+        
+        console.log("Interview id type is: ", typeof interviewId);
+        console.log("Starting overall score polling for interview id:", interviewId);
+
+        let intervalId: ReturnType<typeof setInterval>; 
+
+        async function startPolling() {
+            intervalId = setInterval(async () => {
+            let score: number | null = null;
+            if (interviewId){
+                score = await fetchOverallScoreOnce(interviewId);
+            }
+
+            if (score !== null) {
+                setOverallScore(score);
+                setScoreLoading(false);
+                clearInterval(intervalId); // stop polling once ready
+            }
+            }, 3000); // poll every 3 seconds
+        }
+
+        startPolling();
+
+        // cleanup
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [interviewId]);
+
+
+
     return (
         <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">
             <div className="mx-auto max-w-2xl">
@@ -463,6 +534,16 @@ export default function InterviewSummary(): JSX.Element {
                         >
                             Reload widget
                         </button>
+                    )}
+                </div>
+
+                <div className="mt-4 p-3 bg-gray-800 rounded-md text-white">
+                    <div className="text-sm font-semibold">Overall Score</div>
+
+                    {scoreLoading ? (
+                        <div className="text-gray-400 text-sm">Waiting for score…</div>
+                    ) : (
+                        <div className="text-lg font-bold">{overallScore}</div>
                     )}
                 </div>
 

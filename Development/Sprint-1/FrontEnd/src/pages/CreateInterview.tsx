@@ -1,97 +1,3 @@
-// import { useNavigate } from 'react-router-dom'
-// import { addInterview } from '../lib/storage'
-// import { useState } from 'react'
-// import { useAuth } from '@clerk/clerk-react'
-// import { Navigate } from 'react-router-dom'
-
-
-// export default function CreateInterview() {
-//   const navigate = useNavigate()
-//   const [title, setTitle] = useState('')
-//   const [company, setCompany] = useState('')
-//   const [role, setRole] = useState('')
-//   const [date, setDate] = useState('')
-
-//   const { isLoaded, isSignedIn, userId, getToken } = useAuth()
-
-//   if (!isLoaded) return <div /> // or spinner
-//   if (!isSignedIn) return <Navigate to="/login" replace />
-
-//   return (
-//     <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">
-//       <div className="mx-auto max-w-2xl">
-//         <h1 className="text-2xl font-semibold text-white">Create Interview</h1>
-//         <form
-//           className="mt-6 grid grid-cols-1 gap-5"
-//           onSubmit={(e) => {
-//             e.preventDefault()
-//             const created = addInterview({ title, company, role, date })
-//             navigate(`/interview/${created.id}`)
-//           }}
-//         >
-//           <div>
-//             <label className="mb-1 block text-sm text-gray-300">Title</label>
-//             <input
-//               value={title}
-//               onChange={(e) => setTitle(e.target.value)}
-//               required
-//               className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
-//               placeholder="Frontend Interview #1"
-//             />
-//           </div>
-//           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-//             <div>
-//               <label className="mb-1 block text-sm text-gray-300">Company</label>
-//               <input
-//                 value={company}
-//                 onChange={(e) => setCompany(e.target.value)}
-//                 required
-//                 className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
-//                 placeholder="Acme Inc"
-//               />
-//             </div>
-//             <div>
-//               <label className="mb-1 block text-sm text-gray-300">Role</label>
-//               <input
-//                 value={role}
-//                 onChange={(e) => setRole(e.target.value)}
-//                 required
-//                 className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
-//                 placeholder="Frontend Engineer"
-//               />
-//             </div>
-//           </div>
-//           <div>
-//             <label className="mb-1 block text-sm text-gray-300">Date & Time</label>
-//             <input
-//               type="datetime-local"
-//               value={date}
-//               onChange={(e) => setDate(e.target.value)}
-//               required
-//               className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
-//             />
-//           </div>
-//           <div className="flex justify-end gap-3">
-//             <button
-//               type="button"
-//               onClick={() => navigate(-1)}
-//               className="rounded-md border border-white/10 px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
-//             >
-//               Cancel
-//             </button>
-//             <button
-//               type="submit"
-//               className="rounded-md bg-[#3ecf8e] px-4 py-2 text-sm font-semibold text-black hover:bg-[#36be81]"
-//             >
-//               Save & Start
-//             </button>
-//           </div>
-//         </form>
-//       </div>
-//     </main>
-//   )
-// }
-// src/pages/CreateInterview.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
@@ -128,7 +34,8 @@ export default function CreateInterview(): JSX.Element {
       let token: string | null = null;
       if (getToken) {
         try {
-          token = await getToken();
+          token = await getToken({ template: "interview-backend" });
+          console.log("Token received:", token ? "Yes" : "No");
         } catch (err) {
           console.warn("getToken failed:", err);
           token = null;
@@ -164,14 +71,12 @@ export default function CreateInterview(): JSX.Element {
       }
 
       // success
-      const interviewId = body?.id ?? null;
+      const interviewId = body?.interviewId ?? null;
       console.log("Received interview ID:", interviewId);
-      console.log("Interview created successfully:", body);
 
       if (interviewId) {
-        // Navigate to interview session page if id is returned
         navigate("/interview-summary", {
-          state: { jobTitle, company, description: jobDescription },
+          state: { id: interviewId, jobTitle, company, description: jobDescription },
         });
       } else {
         setError("Error in creating interview");

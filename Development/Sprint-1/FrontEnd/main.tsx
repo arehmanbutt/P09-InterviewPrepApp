@@ -55,6 +55,8 @@ import Dashboard from './src/pages/Dashboard'
 import CreateInterview from './src/pages/CreateInterview'
 import Interview from './src/pages/Interview'
 import InterviewSummary from './src/pages/InterviewSummary'
+import Profile from './src/pages/Profile'
+
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -80,6 +82,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/create-interview" element={<CreateInterview />} />
             <Route path="/interview/:id" element={<Interview />} />
             <Route path="/interview-summary" element={<InterviewSummary />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </App>
       </ClerkProvider>
