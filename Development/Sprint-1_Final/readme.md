@@ -12,33 +12,47 @@ Muhammad Kabli - 26100401
 
 Haider Abbas Virk - 26100032
 
-Sprint 1 Deliverables
-1. Deployed System
+# LIST OF REQUIREMENTS COMPLETED IN THE SPRINT
+
+Manage Database: Securely stores, organizes, and retrieves all interview questions and user data for the application.
+Done by: Abdul Samad - 26100314, Abdul Rehman - 26100049
+
+Edit Profile: Allows users to update and personalize their account information and preferences.
+Done by: Haider Abbas Virk - 26100032, Muhammad Kabli - 26100401
+
+Score User Profile: Analyzes and assigns a performance score to a user based on their completed interview.
+Done by: Abdul Samad - 26100314, Abdul Rehman - 26100049
+
+## Sprint 1 Deliverables
+
+# 1. Deployed System
+
 Working system deployed on hosting platform with STRIDE security measures implemented.
 
-2. Secure Code Implementation
-Code with STRIDE framework security practices uploaded to Development/Sprint-1 folder:
+# 2. Secure Code Implementation
+Code with STRIDE framework security practices uploaded:
 
-Spoofing: JWT authentication with token validation
+1. Spoofing: JWT authentication with token validation
 
-Tampering: Input validation and HTTPS enforcement
+2. Tampering: Input validation and HTTPS enforcement
 
-Repudiation: Comprehensive audit logging
+3. Repudiation: Comprehensive audit logging
 
-Information Disclosure: Data encryption and authorization checks
+4. Information Disclosure: Data encryption and authorization checks
 
-DoS: Rate limiting and request throttling
+5. DoS: Rate limiting and request throttling
 
-Elevation of Privilege: Strict RBAC implementation
+6. Elevation of Privilege: Strict RBAC implementation
 
-5. SonarQube Integration
-Security vulnerabilities identified and fixed
+# 3. SonarQube Integration
 
-Code quality analysis completed
+1. Security vulnerabilities identified and fixed
 
-Maintainability and reliability metrics tracked
+2. Code quality analysis completed
 
-Continuous security scanning implemented
+3. Maintainability and reliability metrics tracked
+
+4. Continuous security scanning implemented
 
 Security Testing
 Test case execution report includes security penetration testing with verified threat mitigations.
