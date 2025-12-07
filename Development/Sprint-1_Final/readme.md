@@ -1,4 +1,4 @@
-P09-InterviewPrepApp - Sprint 1 Submission
+# P09-InterviewPrepApp - Sprint 1 Submission
 
 Team
 
@@ -12,7 +12,7 @@ Muhammad Kabli - 26100401
 
 Haider Abbas Virk - 26100032
 
-# LIST OF REQUIREMENTS COMPLETED IN THE SPRINT
+## LIST OF REQUIREMENTS COMPLETED IN THE SPRINT
 
 Manage Database: Securely stores, organizes, and retrieves all interview questions and user data for the application.
 Done by: Abdul Samad - 26100314, Abdul Rehman - 26100049
@@ -25,11 +25,11 @@ Done by: Abdul Samad - 26100314, Abdul Rehman - 26100049
 
 ## Sprint 1 Deliverables
 
-# 1. Deployed System
+### 1. Deployed System
 
 Working system deployed on hosting platform with STRIDE security measures implemented.
 
-# 2. Secure Code Implementation
+### 2. Secure Code Implementation
 Code with STRIDE framework security practices uploaded:
 
 1. Spoofing: JWT authentication with token validation
@@ -44,7 +44,7 @@ Code with STRIDE framework security practices uploaded:
 
 6. Elevation of Privilege: Strict RBAC implementation
 
-# 3. SonarQube Integration
+### 3. SonarQube Integration
 
 1. Security vulnerabilities identified and fixed
 
