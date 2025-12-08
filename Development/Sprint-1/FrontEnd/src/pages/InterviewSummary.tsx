@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
+=======
+import { useEffect, useRef, useState } from "react";
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 
@@ -27,6 +31,11 @@ export default function InterviewSummary(): JSX.Element {
     const [description, setDescription] = useState<string>(state.description ?? "");
 
     const [questions, setQuestions] = useState<QuestionItem[]>([]);
+<<<<<<< HEAD
+=======
+    const [answersMap, setAnswersMap] = useState<Record<string, string>>({});
+    const [transcript, setTranscript] = useState<any[]>([]);
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     const [loading, setLoading] = useState(false);
     const [creating, setCreating] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -36,9 +45,16 @@ export default function InterviewSummary(): JSX.Element {
     const [scriptStatus, setScriptStatus] = useState<'idle'|'found'|'loading'|'loaded'|'error'|'ready'|'timeout'>('idle');
     const [scriptError, setScriptError] = useState<string | null>(null);
 
+<<<<<<< HEAD
 
     // If we appended the script, scriptRef.current points to it.
     // If the script already existed in DOM before this component loaded, we won't set scriptRef.
+=======
+    const [overallScore, setOverallScore] = useState<number | null>(null);
+    const [scoreLoading, setScoreLoading] = useState(false);
+
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     const scriptRef = useRef<HTMLScriptElement | null>(null);
     const widgetRef = useRef<HTMLElement | null>(null);
 
@@ -48,7 +64,11 @@ export default function InterviewSummary(): JSX.Element {
         const headers: Record<string, string> = { "Content-Type": "application/json" };
         if (isLoaded && isSignedIn && getToken) {
         try {
+<<<<<<< HEAD
             const token = await getToken();
+=======
+            const token = await getToken({ template: "interview-backend" });
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
             if (token) headers["Authorization"] = `Bearer ${token}`;
         } catch (err) {
             console.warn("getToken failed", err);
@@ -57,9 +77,16 @@ export default function InterviewSummary(): JSX.Element {
         return headers;
     }
 
+<<<<<<< HEAD
   // Ensure interview exists (create via save-parameters if no id present)
     async function ensureInterviewExists() {
         if (interviewId) return interviewId;
+=======
+    async function ensureInterviewExists() {
+        console.log("Ensuring interview exists, current id:", interviewId);
+        if (interviewId) return interviewId;
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
         setCreating(true);
         setError(null);
         try {
@@ -80,7 +107,11 @@ export default function InterviewSummary(): JSX.Element {
                 const msg = body?.message || `Server returned ${res.status}`;
                 throw new Error(msg);
             }
+<<<<<<< HEAD
             const id = body?.id ?? body?.interview?._id ?? body?.interview?.id;
+=======
+            const id = body?.interviewId || body?.id || body?.interview?._id;
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
             if (!id) throw new Error("Server did not return interview id");
             setInterviewId(String(id));
             return String(id);
@@ -93,14 +124,22 @@ export default function InterviewSummary(): JSX.Element {
         }
     }
 
+<<<<<<< HEAD
   // Fetch selected questions for an interview id
     async function fetchSelectedQuestions(id: string) {
         setLoading(true);
         setError(null);
+=======
+    async function fetchSelectedQuestions(id: string) {
+        setLoading(true);
+        setError(null);
+        console.log("Fetching selected questions for interview id:", id);
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
         try {
             const headers = await getAuthHeaders();
             const res = await fetch(`${API}/api/interviews/${id}/questions`, { method: "GET", headers });
             const body = await res.json().catch(() => null);
+<<<<<<< HEAD
         if (!res.ok) {
             throw new Error(body?.message || `Failed to fetch questions (${res.status})`);
         }
@@ -108,6 +147,23 @@ export default function InterviewSummary(): JSX.Element {
             throw new Error("Invalid response for questions");
         }
         setQuestions(body.questions);
+=======
+            
+            if (!res.ok) {
+                throw new Error(body?.message || `Failed to fetch questions (${res.status})`);
+            }
+            if (!body || !Array.isArray(body.questions)) {
+                throw new Error("Invalid response for questions");
+            }
+
+            const receivedAnswers = body.answersMap ?? {};
+            const normalized: Record<string, string> = {};
+            for (const k of Object.keys(receivedAnswers)) {
+                normalized[String(k)] = String(receivedAnswers[k] ?? '');
+            }
+            setAnswersMap(normalized);
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
             return body.questions;
         } catch (err: any) {
             console.error("fetchSelectedQuestions error", err);
@@ -130,11 +186,21 @@ export default function InterviewSummary(): JSX.Element {
             `${index + 1}. ${q.title} (ID: ${q.id}): ${q.text}`
         ).join('\n');
 
+<<<<<<< HEAD
         const fullSystemPrompt = `
             You are an automated interview agent used only to run recorded mock technical interviews. Follow these rules exactly.
             
             1) Greeting & permission — Always begin with one concise greeting and ask for permission to start, 
             e.g. “Hello — thank you for joining. May I begin the interview now?” Wait for an explicit affirmative 
+=======
+        console.log('Prepared questions for widget context:', questionTexts.slice(0,3));
+
+        const fullSystemPrompt = `
+            You are an automated interview agent used only to run recorded mock technical interviews. Follow these rules exactly.
+            
+            1) Greeting & permission — Always ask for permission to start, 
+            e.g. “Thank you for joining. May I begin the interview now?” Wait for an explicit affirmative 
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
             (“yes”, “please start”, “go ahead”, “sure”). If the candidate’s first reply is not explicit, ask once more. Proceed only after explicit permission.
             
             2) Authority of questions — You MUST ONLY ask the following questions in order. Do not invent, add, expand, ask about the 
@@ -149,6 +215,7 @@ export default function InterviewSummary(): JSX.Element {
 
             5) Skipping — If the candidate says “skip” or “pass”, acknowledge briefly (“Okay, skipping that question.”) and move on. 
             Allow returning to a skipped question only if the candidate explicitly asks to return after the remaining questions are completed.
+<<<<<<< HEAD
 
             6) End command — If the candidate says “end interview”, “stop interview”, or “finish”, immediately stop the interview flow 
             and say exactly: “Interview complete. Thank you for your time.” Do not ask additional questions.
@@ -166,6 +233,29 @@ export default function InterviewSummary(): JSX.Element {
         // The widget expects a `context` object — include your instructions and the question list there.
         // We set both a `system` key and an explicit `runtimeInstructions` key to be defensive.
         return { fullSystemPrompt};
+=======
+            
+            6) Persistence — After receiving the full answer to each question (including any clarification or skip, and handling any interruptions by 
+            combining partial utterances into a complete response), call the 'save_question_transcript' tool with parameters: question_id (the ID from the list) 
+            and transcript (the candidate's full spoken answer as a single string).
+            
+            7) Ending the interview — After receiving and acknowledging the answer to the last question (including any clarification), 
+            immediately say exactly: “Interview complete. Thank you for your time.” Do not ask additional questions or continue the conversation. 
+            End the session.
+            
+            IMPORTANT: Do not prompt for job info, role summary, or anything else outside the provided questions.
+            `;
+            
+            console.log('Building widget with embedded prompt:', { fullSystemPrompt, questionsList });
+        // 6) Webhook / persistence — If webhook/event hooks are configured for the embed, emit an event at the end of each question 
+        // turn with the candidate’s transcript and the question id. Also emit a final “interview.finished” event when done. 
+        // (This is informational. The embed platform will send webhooks — ensure your server endpoint accepts them.)
+        // const stopPhrases = ['end interview', 'stop interview', 'finish', 'end']; //end added
+
+        // The widget expects a `context` object — include your instructions and the question list there.
+        // We set both a `system` key and an explicit `runtimeInstructions` key to be defensive.
+        return { fullSystemPrompt };
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     }
 
     function removeMountedWidgetElement() {
@@ -195,6 +285,7 @@ export default function InterviewSummary(): JSX.Element {
         }
     }
 
+<<<<<<< HEAD
     // async function loadAndMountWidget(contextObj: object, questionsArray: QuestionItem[]) {
     //     removeMountedWidgetElement();
     //     setWidgetLoaded(false);
@@ -510,11 +601,167 @@ export default function InterviewSummary(): JSX.Element {
             setScriptStatus('found');
             console.log("Found existing widget script:", existingScript.src);
             const registered = await waitForElementRegistered(ELEMENT_NAME, 4000, 150);
+=======
+    async function loadAndMountWidget(fullSystemPrompt: string, questionsArray: QuestionItem[]) {
+        removeMountedWidgetElement();
+        setWidgetLoaded(false);
+        setScriptError(null);
+        setScriptStatus('idle');
+
+        const ELEMENT_NAME = "elevenlabs-convai";
+        // Use the recommended src (simplify from candidates for stability)
+        const SCRIPT_SRC = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+
+        // poll helper: wait until customElements has the element or until timeout
+        const waitForElementRegistered = async (elementName: string, maxWaitMs = 5000, interval = 150) => {
+            const start = Date.now();
+            while (Date.now() - start < maxWaitMs) {
+                if (customElements && customElements.get(elementName)) {
+                    return true;
+                }
+                await new Promise((r) => setTimeout(r, interval));
+            }
+            return false;
+        };
+
+        const createWidget = () => {
+            try {
+                // if custom element still not registered, abort
+                if (!customElements.get(ELEMENT_NAME)) {
+                    console.warn("custom element not yet registered:", ELEMENT_NAME);
+                    return false;
+                }
+                console.log("Creating widget element: ", customElements.get(ELEMENT_NAME));
+                removeMountedWidgetElement();
+                const container = document.getElementById("widget-container");
+                if (!container) throw new Error("widget container missing");
+
+                const widgetEl = document.createElement(ELEMENT_NAME) as HTMLElement;
+
+                // IMPORTANT: set your agent id here (required for the widget to fetch agent config and render)
+                const AGENT_ID = import.meta.env.VITE_ELEVEN_AGENT_ID; // <- replace with your actual agent id
+                widgetEl.setAttribute("agent-id", AGENT_ID);
+                try { (widgetEl as any)["agent-id"] = AGENT_ID; } catch {}
+
+                // Set system prompt override (required)
+                widgetEl.setAttribute("override-prompt", fullSystemPrompt);
+
+                // ensure widget is visible even if stylesheet is slow to load
+                try {
+                    widgetEl.style.display = "block";
+                    widgetEl.style.minHeight = "240px";
+                    widgetEl.style.width = "100%";
+                } catch {}
+
+                if (interviewId) {
+                    try {
+                        widgetEl.setAttribute("dynamic-variables", JSON.stringify({ interviewId: interviewId }));
+                        (widgetEl as any).metadata = { interviewId };
+                    } catch {}
+                }
+
+                container.appendChild(widgetEl);
+                widgetRef.current = widgetEl;
+                setWidgetLoaded(true);
+
+                // small debug log (updated to log overrides)
+                setTimeout(() => {
+                    try {
+                            console.log("Widget mounted. element attributes/properties:", {
+                            agentIdAttr: widgetEl.getAttribute("agent-id"),
+                            overridePromptAttr: widgetEl.getAttribute("override-prompt"),
+                        });
+                    } catch (e) {
+                        console.warn("post-mount inspect failed", e);
+                    }
+                }, 600);
+
+                widgetEl.addEventListener('user_transcript', (e) => {
+                    const event = e as CustomEvent;
+                    const detail = event.detail;
+                    if (detail?.user_transcript) {
+                        setTranscript((prev) => [...prev, { role: 'user', text: detail.user_transcript, questionId: detail.question_id || null }]);
+                        // Optionally send to backend via fetch to persist
+                    }
+                    console.log('User transcript:', detail);
+                });
+
+                // Listen for agent responses (fired with agent's message)
+                widgetEl.addEventListener('agent_response', (e) => {
+                    const event = e as CustomEvent;
+                    const detail = event.detail;
+                    if (detail?.text) {
+                        setTranscript((prev) => [...prev, { role: 'agent', text: detail.text, questionId: detail.question_id || null }]);
+                    }
+                    console.log('Agent response:', detail);
+                });
+
+                return true;
+            } catch (err) {
+                console.error("createWidget error", err);
+                setScriptError(String(err));
+                return false;
+            }
+        };
+
+        try {
+            // If element already registered, try create immediately
+            if (customElements && customElements.get(ELEMENT_NAME)) {
+                setScriptStatus('ready');
+                const created = createWidget();
+                if (created) return;
+            }
+
+            // Check if script already present
+            const existingScript = Array.from(document.getElementsByTagName("script")).find((s) => s.src === SCRIPT_SRC);
+
+            if (existingScript) {
+                setScriptStatus('found');
+                console.log("Found existing widget script:", existingScript.src);
+                const registered = await waitForElementRegistered(ELEMENT_NAME, 4000, 150);
+                if (registered) {
+                    setScriptStatus('ready');
+                    const ok = createWidget();
+                    if (ok) return;
+                } else {
+                    console.warn("Existing script found but element not registered after wait");
+                }
+            }
+
+            // Inject script if not found
+            setScriptStatus('loading');
+            const script = document.createElement("script");
+            script.src = SCRIPT_SRC;
+            script.async = true;
+            script.type = "text/javascript";
+            scriptRef.current = script;
+            const loadPromise = new Promise<void>((resolve, reject) => {
+                script.addEventListener("load", () => resolve(), { once: true });
+                script.addEventListener("error", (e) => reject(new Error(`Script load error for ${SCRIPT_SRC}`)), { once: true });
+                setTimeout(() => reject(new Error(`Timeout loading script ${SCRIPT_SRC}`)), 6000);
+            });
+            document.body.appendChild(script);
+            try {
+                await loadPromise;
+                setScriptStatus('loaded');
+            } catch (err: any) {
+                console.warn("Script load failed for", SCRIPT_SRC, err);
+                script.remove();
+                scriptRef.current = null;
+                setScriptError(String(err?.message || err));
+                setScriptStatus('error');
+                return; // No more candidates, so exit
+            }
+
+            // After load, wait for registration
+            const registered = await waitForElementRegistered(ELEMENT_NAME, 5000, 150);
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
             if (registered) {
                 setScriptStatus('ready');
                 const ok = createWidget();
                 if (ok) return;
             } else {
+<<<<<<< HEAD
                 console.warn("Existing script found but element not registered after wait");
             }
         }
@@ -560,6 +807,17 @@ export default function InterviewSummary(): JSX.Element {
         setScriptStatus('error');
     }
 }
+=======
+                setScriptStatus('timeout');
+                setScriptError(`Element ${ELEMENT_NAME} not registered after script load`);
+            }
+        } catch (err: any) {
+            console.error("loadAndMountWidget top-level error", err);
+            setScriptError(String(err?.message || err));
+            setScriptStatus('error');
+        }
+    }
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     
     // Primary "Start interview" orchestration
     const startInterview = async () => {
@@ -611,6 +869,62 @@ export default function InterviewSummary(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+<<<<<<< HEAD
+=======
+    async function fetchOverallScoreOnce(interviewId: string) {
+        try {
+            const headers = await getAuthHeaders();
+
+            const res = await fetch(`${API}/api/webhooks/transcripts/${interviewId}`, {
+                method: "GET",
+                headers,
+            });
+
+            const body = await res.json().catch(() => null);
+
+            if (!res.ok) return null;
+
+            return body?.transcript?.overallScore ?? null;
+        } catch (err) {
+            console.error("polling score error:", err);
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        if (!interviewId) return;
+        
+        console.log("Interview id type is: ", typeof interviewId);
+        console.log("Starting overall score polling for interview id:", interviewId);
+
+        let intervalId: ReturnType<typeof setInterval>; 
+
+        async function startPolling() {
+            intervalId = setInterval(async () => {
+            let score: number | null = null;
+            if (interviewId){
+                score = await fetchOverallScoreOnce(interviewId);
+            }
+
+            if (score !== null) {
+                setOverallScore(score);
+                setScoreLoading(false);
+                clearInterval(intervalId); // stop polling once ready
+            }
+            }, 3000); // poll every 3 seconds
+        }
+
+        startPolling();
+
+        // cleanup
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [interviewId]);
+
+
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     return (
         <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">
             <div className="mx-auto max-w-2xl">
@@ -664,13 +978,30 @@ export default function InterviewSummary(): JSX.Element {
                     )}
                 </div>
 
+<<<<<<< HEAD
+=======
+                <div className="mt-4 p-3 bg-gray-800 rounded-md text-white">
+                    <div className="text-sm font-semibold">Overall Score</div>
+
+                    {scoreLoading ? (
+                        <div className="text-gray-400 text-sm">Waiting for score…</div>
+                    ) : (
+                        <div className="text-lg font-bold">{overallScore}</div>
+                    )}
+                </div>
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
                     {error && <div className="mt-4 rounded-md bg-red-800/60 p-3 text-red-100">{error}</div>}
 
                     {/* <div id="widget-container" className="mt-8 min-h-[200px]" /> */}
                     <div id="widget-container" className="mt-8 min-h-[200px]" />
 
                     {/* DEBUG PANEL */}
+<<<<<<< HEAD
                     <div className="mt-3 text-sm text-gray-400">
+=======
+                    {/* <div className="mt-3 text-sm text-gray-400">
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
                         <div>Widget script status: <span className="text-emerald-300 ml-2">{scriptStatus}</span></div>
                         {scriptRef.current?.src && <div>Script src: <code className="text-xs">{scriptRef.current.src}</code></div>}
                         {scriptError && <div className="mt-1 text-red-400">Error: {scriptError}</div>}
@@ -682,7 +1013,11 @@ export default function InterviewSummary(): JSX.Element {
                         The agent should now ask questions from your selected dataset. To persist transcripts you must either
                         configure the Convai/ElevenLabs webhook to POST transcripts to your server or capture/upload audio + call STT endpoints.
                         </div>
+<<<<<<< HEAD
                     )}
+=======
+                    )} */}
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
                 </div>
             </div>
         </main>

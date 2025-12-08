@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { useNavigate } from 'react-router-dom'
 // import { addInterview } from '../lib/storage'
 // import { useState } from 'react'
@@ -92,6 +93,8 @@
 //   )
 // }
 // src/pages/CreateInterview.tsx
+=======
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
@@ -128,7 +131,12 @@ export default function CreateInterview(): JSX.Element {
       let token: string | null = null;
       if (getToken) {
         try {
+<<<<<<< HEAD
           token = await getToken();
+=======
+          token = await getToken({ template: "interview-backend" });
+          console.log("Token received:", token ? "Yes" : "No");
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
         } catch (err) {
           console.warn("getToken failed:", err);
           token = null;
@@ -164,6 +172,7 @@ export default function CreateInterview(): JSX.Element {
       }
 
       // success
+<<<<<<< HEAD
       const interviewId = body?.id ?? null;
       console.log("Received interview ID:", interviewId);
       console.log("Interview created successfully:", body);
@@ -172,6 +181,14 @@ export default function CreateInterview(): JSX.Element {
         // Navigate to interview session page if id is returned
         navigate("/interview-summary", {
           state: { jobTitle, company, description: jobDescription },
+=======
+      const interviewId = body?.interviewId ?? null;
+      console.log("Received interview ID:", interviewId);
+
+      if (interviewId) {
+        navigate("/interview-summary", {
+          state: { id: interviewId, jobTitle, company, description: jobDescription },
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
         });
       } else {
         setError("Error in creating interview");

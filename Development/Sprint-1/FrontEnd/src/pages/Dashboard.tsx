@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { Link } from 'react-router-dom'
 // import { readInterviews } from '../lib/storage'
 // import { useAuth, SignedIn, SignedOut } from '@clerk/clerk-react'
@@ -58,15 +59,38 @@
 //   )
 // }
 import { Link } from 'react-router-dom'
+=======
+import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
 import { readInterviews } from '../lib/storage'
 import { useAuth, SignedIn, SignedOut } from '@clerk/clerk-react'
 import { Navigate } from 'react-router-dom'
 
+<<<<<<< HEAD
 
 export default function Dashboard() {
   const { isLoaded, isSignedIn, userId, getToken } = useAuth()
 
   if (!isLoaded) return <div /> // or spinner
+=======
+interface Question {
+  question_id: number
+  question_title: string
+  question_text: string
+  answer_text?: string
+}
+
+export default function Dashboard() {
+  const { isLoaded, isSignedIn, userId, getToken } = useAuth()
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  
+  const API_URL = import.meta.env.VITE_API_URL || ''
+
+  if (!isLoaded) return <div /> 
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
   if (!isSignedIn) return <Navigate to="/login" replace />
 
   const interviews = readInterviews()
@@ -79,6 +103,93 @@ export default function Dashboard() {
     return d.toLocaleString()
   }
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    let isMounted = true;
+    let importInProgress = false;
+
+    async function load() {
+      try {
+        const token = isSignedIn ? await getToken({ template: "interview-backend" }) : null;
+        const headers: HeadersInit = { 'Content-Type': 'application/json' };
+        if (token) headers.Authorization = `Bearer ${token}`;
+
+        // 1) Try fetching questions
+        let res = await fetch(`${API_URL}/api/interviews/extract-qas`, { headers });
+
+        // 2) If no content or server error, try import ONCE
+        if (!res.ok && [204, 404, 500].includes(res.status) && !importInProgress) {
+          importInProgress = true;
+          console.log('No questions found on server, attempting import...');
+
+          const importRes = await fetch(`${API_URL}/api/interviews/import-qas`, { method: 'POST', headers });
+          if (!importRes.ok) {
+            console.error('Import failed', importRes.status);
+            // Do not loop; show error
+            setError('Failed to import questions from source. Check server logs.');
+            return;
+          }
+
+          // Re-fetch after successful import
+          res = await fetch(`${API_URL}/api/interviews/extract-qas`, { headers });
+        }
+
+        if (res.ok) {
+          const data = await res.json();
+          if (!isMounted) return;
+          setQuestions(Array.isArray(data) ? data : []);
+        } else {
+          // handle other non-ok statuses gracefully
+          const text = await res.text().catch(() => null);
+          console.warn('extract-qas responded with', res.status, text);
+          setQuestions([]);
+        }
+      } catch (err) {
+        console.error('Failed to load questions:', err);
+        setError('Failed to load questions');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+
+    load();
+    return () => { isMounted = false; };
+  }, [API_URL, getToken, isLoaded, isSignedIn]);
+
+
+  // useEffect(() => {
+  //   async function load() {
+  //     try {
+  //       const token = isSignedIn ? await getToken({ template: "interview-backend" }) : null;
+  //       const headers: HeadersInit = { 'Content-Type': 'application/json' };
+  //       if (token) headers.Authorization = `Bearer ${token}`;
+
+  //       let res = await fetch(`${API_URL}/api/interviews/extract-qas`, { headers });
+
+  //       if (!res.ok && [404, 204, 500].includes(res.status)) {
+  //         console.log('No questions found, importing...');
+  //         await fetch(`${API_URL}/api/interviews/import-qas`, { method: 'POST', headers });
+  //         res = await fetch(`${API_URL}/api/interviews/extract-qas`, { headers }); // ← re-fetch!
+  //       }
+
+  //       if (res.ok) {
+  //         console.log('Questions fetched successfully');
+  //         const data = await res.json();
+  //         setQuestions(Array.isArray(data) ? data : []);
+  //       }
+  //     } catch (err) {
+  //       console.error('Failed to load questions:', err);
+  //       setError('Failed to load questions');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+
+  //   load();
+  // }, [API_URL, getToken, isLoaded, isSignedIn]);
+
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">
       <div className="mx-auto max-w-6xl">
@@ -95,12 +206,20 @@ export default function Dashboard() {
         {!hasItems ? (
           <div className="rounded-lg border border-white/10 bg-[#0e0e0e] p-8 text-center">
             <p className="text-gray-300">No interviews yet. Create your first interview to get started.</p>
+<<<<<<< HEAD
             <Link
+=======
+            {/* <Link
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
               to="/create-interview"
               className="mt-6 inline-flex rounded-md bg-[#3ecf8e] px-4 py-2 text-sm font-semibold text-black hover:bg-[#36be81]"
             >
               Create Interview
+<<<<<<< HEAD
             </Link>
+=======
+            </Link> */}
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -124,6 +243,18 @@ export default function Dashboard() {
           </div>
         )}
       </div>
+<<<<<<< HEAD
+=======
+      {/* <div className="grid gap-4">
+        {questions.slice(0, 10).map((q) => (
+          <article key={q.question_id} className="p-4 bg-[#0e0e0e] rounded border border-white/6">
+            <p>{q.question_title}</p>
+            <p className="text-sm text-gray-300 mt-2">{q.question_text.slice(0, 200)}...</p>
+          </article>
+        ))}
+        {questions.length > 10 && <p className="text-sm text-gray-500 mt-3">Showing first 10 items for preview</p>}
+    </div> */}
+>>>>>>> e8a551a48cffd5700857244259a8f9dd7f7fe2b9
     </main>
   )
 }
