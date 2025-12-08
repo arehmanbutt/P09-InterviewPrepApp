@@ -56,3 +56,6 @@ Code with STRIDE framework security practices uploaded:
 
 Security Testing
 Test case execution report includes security penetration testing with verified threat mitigations.
+
+Functionality Video Link:
+<a href="https://drive.google.com/file/d/1_Lcf8osuBcMwWsvZqYlp0BanrOWLEkUr/view?usp=sharing">Functionality<>
