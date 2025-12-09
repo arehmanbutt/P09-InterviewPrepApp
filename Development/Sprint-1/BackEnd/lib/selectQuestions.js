@@ -24,7 +24,7 @@ function detectTechTerms(text, TECH_TERMS) {
   const detected = new Set();
 
   for (const term of TECH_TERMS) {
-    const escaped = term.replaceAll(/[.*+?^${}()|[\]\\]/g, "\\$&"); // safe escape
+    const escaped = term.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`); // safe escape
     const re = new RegExp(String.raw`\b${escaped}\b`, "i");
 
     if (re.test(text)) detected.add(term.replaceAll(".", "").toLowerCase());
@@ -56,7 +56,7 @@ function buildOrClauses(keywords) {
   const clauses = [{ tags: { $in: keywords } }];
 
   for (const k of keywords) {
-    const escaped = k.replaceAll(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escaped = k.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
     const pattern = String.raw`\b${escaped}\b`;
 
     // push both title and text regex clauses at once

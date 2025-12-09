@@ -154,7 +154,7 @@ router.post("/save-parameters", async (req, res) => {
     const selectedIdsNum = selectedIdsRaw
       .map((id) => {
         const n = Number(id);
-        return isNaN(n) ? null : n;
+        return Number.isNaN(n) ? null : n;
       })
       .filter((v) => v !== null);
 

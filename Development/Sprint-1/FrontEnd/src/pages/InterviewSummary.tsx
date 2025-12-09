@@ -153,7 +153,9 @@ export default function InterviewSummary(): JSX.Element {
   function removeMountedWidgetElement() {
     const container = document.getElementById("widget-container");
     if (!container) return;
-    Array.from(container.childNodes).forEach((n) => n.remove());
+    for (const n of Array.from(container.childNodes)) {
+      n.remove();
+    }
     widgetRef.current = null;
     setWidgetLoaded(false);
   }
@@ -283,13 +285,14 @@ export default function InterviewSummary(): JSX.Element {
     return () => clearInterval(interval);
   }, [interviewId]);
 
-  let startInterviewLabel = creating
-    ? "Creating..."
-    : loading
-    ? "Loading..."
-    : widgetLoaded
-    ? "Widget loaded"
-    : "Start interview";
+  let startInterviewLabel = "Start interview";
+  if (creating) {
+    startInterviewLabel = "Creating...";
+  } else if (loading) {
+    startInterviewLabel = "Loading...";
+  } else if (widgetLoaded) {
+    startInterviewLabel = "Widget loaded";
+  }
 
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">

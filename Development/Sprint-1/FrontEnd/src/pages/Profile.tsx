@@ -6,7 +6,7 @@ type Interview = {
   id: string;
   title: string;
   company: string;
-  status: "completed" | "in-progress" | "scheduled" | string;
+  status: string;
   date?: string;
 };
 
