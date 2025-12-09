@@ -11,10 +11,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
-    "baseUrl": ".",
+    "baseUrl": ".",                   // keep for now
     "paths": {
       "@/*": ["*"]
-    }
+    },
+    "ignoreDeprecations": "6.0"       // <- add this to silence warning
   },
   "include": ["."]
 }
