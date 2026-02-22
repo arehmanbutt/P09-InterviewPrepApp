@@ -1,0 +1,2042 @@
+[
+    {
+      "question_id": "jsq_001",
+      "question_title": "JavaScript Introduction",
+      "question_text": "What is JavaScript?",
+      "answer_text": "JavaScript is a powerful client-side scripting language used mainly for enhancing user interaction with webpages. It makes webpages more lively and interactive. JavaScript is also widely used in game development and mobile application development.",
+      "tags": ["javascript", "basics", "introduction"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_002",
+      "question_title": "Java vs JavaScript",
+      "question_text": "Enumerate the differences between Java and JavaScript?",
+      "answer_text": "Java is a complete programming language, while JavaScript is a coded program that can be introduced to HTML pages. These two languages are not inter-dependent and are designed for different purposes. Java is an object-oriented programming (OOP) language like C++ or C, whereas JavaScript is a client-side scripting language.",
+      "tags": ["javascript", "java", "comparison"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_003",
+      "question_title": "JavaScript Data Types",
+      "question_text": "What are JavaScript Data Types?",
+      "answer_text": "Following are the JavaScript Data types:\n- Number\n- String\n- Boolean\n- Object\n- Undefined",
+      "tags": ["javascript", "datatypes", "basics"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_004",
+      "question_title": "isNaN Function",
+      "question_text": "What is the use of isNaN function?",
+      "answer_text": "isNaN function returns true if the argument is not a number; otherwise, it returns false.",
+      "tags": ["javascript", "functions", "validation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_005",
+      "question_title": "JavaScript vs ASP Performance",
+      "question_text": "Which is faster between JavaScript and an ASP script?",
+      "answer_text": "JavaScript is faster. JavaScript is a client-side language and does not need the assistance of the webserver to execute. On the other hand, ASP is a server-side language and hence is always slower than JavaScript. Note: JavaScript can also be used as a server-side language (Node.js).",
+      "tags": ["javascript", "asp", "performance", "comparison"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_006",
+      "question_title": "Negative Infinity",
+      "question_text": "What is negative Infinity?",
+      "answer_text": "Negative Infinity is a number in JavaScript which can be derived by dividing a negative number by zero.",
+      "tags": ["javascript", "numbers", "infinity"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_007",
+      "question_title": "Breaking JavaScript Code",
+      "question_text": "Is it possible to break JavaScript Code into several lines?",
+      "answer_text": "Breaking within a string statement can be done by using a backslash '\\' at the end of the first line.\nExample:\ndocument.write(\"This is \\\na program\");\n\nIf you change to a new line when not within a string statement, JavaScript ignores the break in the line.\nExample:\nvar x=1, y=2,\nz=x+y;\n\nThe above code is valid, though not advisable as it hampers debugging.",
+      "tags": ["javascript", "syntax", "formatting"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_008",
+      "question_title": "JavaScript Developer",
+      "question_text": "Which company developed JavaScript?",
+      "answer_text": "Netscape is the software company that developed JavaScript.",
+      "tags": ["javascript", "history", "netscape"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_009",
+      "question_title": "Undeclared vs Undefined Variables",
+      "question_text": "What are undeclared and undefined variables?",
+      "answer_text": "Undeclared variables are those that do not exist in a program and are not declared. If the program tries to read the value of an undeclared variable, a runtime error is encountered.\n\nUndefined variables are those that are declared in the program but have not been given any value. If the program tries to read the value of an undefined variable, an undefined value is returned.",
+      "tags": ["javascript", "variables", "errors"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_011",
+      "question_title": "Global Variables",
+      "question_text": "What are global variables? How are these variable declared?",
+      "answer_text": "Global variables are available throughout the entire code and have no scope. The var keyword is used to declare a local variable or object. If the var keyword is omitted, a global variable is declared.\n\nExample:\n// Declare a global variable:\nglobalVariable = \"Test\";\n\nThe problems with global variables include name clashes between local and global scope, and difficulty in debugging and testing code that relies on global variables.",
+      "tags": ["javascript", "variables", "scope", "global"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_012",
+      "question_title": "Prompt Box",
+      "question_text": "What is a prompt box?",
+      "answer_text": "A prompt box is a dialog box that allows the user to enter input by providing a text box. It includes a label and a text input field for entering text or numbers.",
+      "tags": ["javascript", "dialogs", "input"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_013",
+      "question_title": "This Keyword",
+      "question_text": "What is 'this' keyword in JavaScript?",
+      "answer_text": "'This' keyword refers to the object from where it was called.",
+      "tags": ["javascript", "keywords", "objects", "context"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_014",
+      "question_title": "JavaScript Timers",
+      "question_text": "What is the working of timers in JavaScript?",
+      "answer_text": "Timers are used to execute a piece of code at a set time or repeat the code at given intervals. This is done using the functions setTimeout, setInterval, and clearInterval.\n\n- setTimeout(function, delay): Starts a timer that calls a function after the specified delay.\n- setInterval(function, delay): Repeatedly executes the given function at the specified delay until canceled.\n- clearInterval(id): Stops the timer.\n\nTimers operate within a single thread, so events might queue up waiting to be executed.",
+      "tags": ["javascript", "timers", "asynchronous"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_015",
+      "question_title": "JavaScript Comments",
+      "question_text": "Which symbol is used for comments in Javascript?",
+      "answer_text": "// for Single line comments\n\n/*\nMulti\nLine\nComment\n*/",
+      "tags": ["javascript", "comments", "syntax"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_016",
+      "question_title": "ViewState vs SessionState",
+      "question_text": "What is the difference between ViewState and SessionState?",
+      "answer_text": "'ViewState' is specific to a page in a session.\n'SessionState' is specific to user data that can be accessed across all web application pages.",
+      "tags": ["javascript", "state", "web"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_017",
+      "question_title": "Strict Equality Operator",
+      "question_text": "What is === operator?",
+      "answer_text": "=== is called a strict equality operator, which returns true only when the two operands have the same value and the same type without type conversion.",
+      "tags": ["javascript", "operators", "comparison"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_018",
+      "question_title": "Form Submission",
+      "question_text": "How you can submit a form using JavaScript?",
+      "answer_text": "To submit a form using JavaScript:\ndocument.form[0].submit();",
+      "tags": ["javascript", "forms", "dom"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_019",
+      "question_title": "Type Conversion",
+      "question_text": "Does JavaScript support automatic type conversion?",
+      "answer_text": "Yes, JavaScript does support automatic type conversion. It is commonly used by JavaScript developers for implicit type conversion.",
+      "tags": ["javascript", "typing", "conversion"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_020",
+      "question_title": "Changing Element Style",
+      "question_text": "How can the style/class of an element be changed?",
+      "answer_text": "It can be done in the following ways:\n\ndocument.getElementById(\"myText\").style.fontSize = \"20\";\n\nor\n\ndocument.getElementById(\"myText\").className = \"anyclass\";",
+      "tags": ["javascript", "dom", "styling", "css"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_021",
+      "question_title": "File Read/Write",
+      "question_text": "How to read and write a file using JavaScript?",
+      "answer_text": "There are two ways to read and write files using JavaScript:\n1. Using JavaScript extensions\n2. Using a web page and ActiveX objects",
+      "tags": ["javascript", "files", "io"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_022",
+      "question_title": "Looping Structures",
+      "question_text": "What are all the looping structures in JavaScript?",
+      "answer_text": "Following are looping structures in JavaScript:\n- For loop\n- While loop\n- Do-while loop",
+      "tags": ["javascript", "loops", "control-flow"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_023",
+      "question_title": "Variable Typing",
+      "question_text": "What is called Variable typing in Javascript?",
+      "answer_text": "Variable typing allows assigning different types of values to the same variable.\n\nExample:\ni = 10;\ni = \"string\";\n\nThis is called variable typing.",
+      "tags": ["javascript", "variables", "typing", "dynamic"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_024",
+      "question_title": "String to Integer Conversion",
+      "question_text": "How can you convert the string of any base to an integer in JavaScript?",
+      "answer_text": "The parseInt() function is used to convert numbers between different bases. parseInt() takes the string to be converted as its first parameter, and the second parameter is the base of the given string.\n\nTo convert 4F (base 16) to integer:\nparseInt(\"4F\", 16);",
+      "tags": ["javascript", "conversion", "numbers", "parseint"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_025",
+      "question_title": "Equality Operators",
+      "question_text": "Difference between \"==\" and \"===\"?",
+      "answer_text": "\"==\" checks only for equality in value, whereas \"===\" is a stricter equality test and returns false if either the value or the type of the two variables are different.",
+      "tags": ["javascript", "operators", "comparison", "equality"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_026",
+      "question_title": "String Concatenation Result",
+      "question_text": "What would be the result of 3+2+\"7\"?",
+      "answer_text": "Since 3 and 2 are integers, they will be added numerically (resulting in 5). Since \"7\" is a string, concatenation will be done. So the result would be \"57\".",
+      "tags": ["javascript", "operators", "concatenation", "type-coercion"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_027",
+      "question_title": "Detecting Operating System",
+      "question_text": "How to detect the operating system on the client machine?",
+      "answer_text": "To detect the operating system on the client machine, use the navigator.platform string property.",
+      "tags": ["javascript", "browser", "detection", "os"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_028",
+      "question_title": "NULL in JavaScript",
+      "question_text": "What do you mean by NULL in Javascript?",
+      "answer_text": "The NULL value is used to represent no value or no object. It implies no object, null string, no valid boolean value, no number, and no array object.",
+      "tags": ["javascript", "null", "values"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_029",
+      "question_title": "Delete Operator",
+      "question_text": "What is the function of the delete operator?",
+      "answer_text": "The delete keyword is used to delete a property and its value from an object.\n\nExample:\nvar student = {age:20, batch:\"ABC\"};\ndelete student.age;",
+      "tags": ["javascript", "operators", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_030",
+      "question_title": "Undefined Value",
+      "question_text": "What is an undefined value in JavaScript?",
+      "answer_text": "Undefined value means:\n- Variable used in the code doesn't exist\n- Variable is not assigned to any value\n- Property does not exist",
+      "tags": ["javascript", "undefined", "values"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_031",
+      "question_title": "Popup Box Types",
+      "question_text": "What are all the types of Pop up boxes available in JavaScript?",
+      "answer_text": "Alert, Confirm, and Prompt.",
+      "tags": ["javascript", "dialogs", "popup"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_032",
+      "question_title": "Void(0) Usage",
+      "question_text": "What is the use of Void (0)?",
+      "answer_text": "Void(0) is used to prevent the page from refreshing when calling another method. The parameter \"zero\" is passed while calling to ensure no value is returned.",
+      "tags": ["javascript", "void", "navigation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_033",
+      "question_title": "Redirect Page",
+      "question_text": "How can a page be forced to load another page in JavaScript?",
+      "answer_text": "Insert the following code:\n```html\n<script language=\"JavaScript\" type=\"text/javascript\">\nlocation.href=\"https://www.example.com\";\n</script>\n```",
+      "tags": ["javascript", "navigation", "redirect"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_034",
+      "question_title": "Variable Data Type",
+      "question_text": "What is the data type of variables in JavaScript?",
+      "answer_text": "All variables in JavaScript are object data types.",
+      "tags": ["javascript", "variables", "datatypes"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_035",
+      "question_title": "Alert vs Confirmation Box",
+      "question_text": "What is the difference between an alert box and a confirmation box?",
+      "answer_text": "An alert box displays only one button (OK).\nA confirmation box displays two buttons (OK and Cancel).",
+      "tags": ["javascript", "dialogs", "comparison"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_036",
+      "question_title": "Escape Characters",
+      "question_text": "What are escape characters?",
+      "answer_text": "Escape characters (backslash \\) are used when working with special characters like single quotes, double quotes, apostrophes, and ampersands. Place backslash before the characters to display them.\n\nExample:\ndocument.write(\"I am a \\\"good\\\" boy.\");",
+      "tags": ["javascript", "strings", "escape"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_037",
+      "question_title": "JavaScript Cookies",
+      "question_text": "What are JavaScript Cookies?",
+      "answer_text": "Cookies are small text files stored on a computer that get created when the user visits websites to store information needed later. Examples include user name details and shopping cart information from previous visits.",
+      "tags": ["javascript", "cookies", "storage"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_038",
+      "question_title": "Pop Method",
+      "question_text": "What a pop()method in JavaScript is?",
+      "answer_text": "The pop() method removes the last element from an array and returns that element. The array is altered.\n\nExample:\nvar cloths = [\"Shirt\", \"Pant\", \"TShirt\"];\ncloths.pop();\n// Now cloths becomes [\"Shirt\", \"Pant\"]",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_039",
+      "question_title": "Concept Level Scope",
+      "question_text": "Does JavaScript has concept level scope?",
+      "answer_text": "No. JavaScript does not have concept-level scope. The variable declared inside a function has scope only inside that function.",
+      "tags": ["javascript", "scope", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_040",
+      "question_title": "innerHTML Disadvantages",
+      "question_text": "What are the disadvantages of using innerHTML in JavaScript?",
+      "answer_text": "Disadvantages of using innerHTML:\n1. Content is replaced everywhere\n2. Cannot append using innerHTML directly (requires workarounds like +=)\n3. Old content is still replaced even with += syntax\n4. Entire innerHTML content is re-parsed and rebuilt, making it slower\n5. Does not provide validation, allowing potentially broken HTML to be inserted",
+      "tags": ["javascript", "dom", "innerhtml", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_041",
+      "question_title": "Break and Continue",
+      "question_text": "What is break and continue statements?",
+      "answer_text": "Break statement exits from the current loop.\nContinue statement skips to the next iteration of the loop.",
+      "tags": ["javascript", "loops", "control-flow"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_042",
+      "question_title": "Data Type Groups",
+      "question_text": "What are the two basic groups of data types in JavaScript?",
+      "answer_text": "They are:\n1. Primitive types (number, boolean, etc.)\n2. Reference types (strings, dates, objects, etc.)",
+      "tags": ["javascript", "datatypes", "categories"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_043",
+      "question_title": "Creating Generic Objects",
+      "question_text": "How can generic objects be created?",
+      "answer_text": "Generic objects can be created as:\nvar obj = new Object();",
+      "tags": ["javascript", "objects", "creation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_044",
+      "question_title": "Typeof Operator",
+      "question_text": "What is the use of a type of operator?",
+      "answer_text": "'typeof' is an operator used to return a string description of the type of a variable.",
+      "tags": ["javascript", "operators", "type-checking"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_045",
+      "question_title": "Exception Handling",
+      "question_text": "Which keywords are used to handle exceptions?",
+      "answer_text": "Try… Catch… finally is used to handle exceptions in JavaScript.\n\n```javascript\ntry {\n    // Code\n} catch(exp) {\n    // Code to handle exception\n} finally {\n    // Code that runs regardless of success or failure\n}\n```",
+      "tags": ["javascript", "exceptions", "error-handling"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_046",
+      "question_title": "Printing Text",
+      "question_text": "Which keyword is used to print the text on the screen?",
+      "answer_text": "document.write(\"Welcome\") is used to print the text \"Welcome\" on the screen.",
+      "tags": ["javascript", "output", "dom"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_047",
+      "question_title": "Blur Function",
+      "question_text": "What is the use of the blur function?",
+      "answer_text": "Blur function is used to remove focus from the specified object.",
+      "tags": ["javascript", "events", "focus"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_048",
+      "question_title": "Variable Typing Definition",
+      "question_text": "What is variable typing?",
+      "answer_text": "Variable typing allows assigning different types of values to the same variable.\n\nExample:\ni = 8;\ni = \"john\";",
+      "tags": ["javascript", "variables", "typing"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_049",
+      "question_title": "OS Detection Method",
+      "question_text": "How to find an operating system in the client machine using JavaScript?",
+      "answer_text": "Use 'navigator.appVersion' to find the operating system's name in the client machine.",
+      "tags": ["javascript", "browser", "detection", "os"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_050",
+      "question_title": "JavaScript Error Types",
+      "question_text": "What are the different types of errors in JavaScript?",
+      "answer_text": "There are three types of errors:\n1. Load time errors: Errors that occur when loading a web page (improper syntax)\n2. Runtime errors: Errors due to misuse of commands\n3. Logical errors: Errors due to bad logic in functions",
+      "tags": ["javascript", "errors", "debugging"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_051",
+      "question_title": "Push Method",
+      "question_text": "What is the use of the Push method in JavaScript?",
+      "answer_text": "The push method adds one or more elements to the end of an array. Multiple elements can be appended by passing multiple arguments.",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_052",
+      "question_title": "Unshift Method",
+      "question_text": "What is the unshift method in JavaScript?",
+      "answer_text": "The unshift method adds one or more elements to the beginning of an array.",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_053",
+      "question_title": "JavaScript vs JScript",
+      "question_text": "What is the difference between JavaScript and Jscript?",
+      "answer_text": "Both are almost similar. JavaScript was developed by Netscape, and JScript was developed by Microsoft.",
+      "tags": ["javascript", "jscript", "comparison", "history"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_054",
+      "question_title": "Assigning Object Properties",
+      "question_text": "How are object properties assigned?",
+      "answer_text": "Properties are assigned to objects in these ways:\nobj[\"class\"] = 12;\n\nor\n\nobj.class = 12;",
+      "tags": ["javascript", "objects", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_055",
+      "question_title": "Strict Mode",
+      "question_text": "What is the 'Strict Mode in JavaScript, and how can it be enabled?",
+      "answer_text": "Strict Mode adds certain compulsions to JavaScript, showing errors for code that might be problematic or unsafe. It helps JavaScript engines work more efficiently.\n\nStrict mode can be enabled by adding \"use strict\" at the beginning of a file or function.\n\nExample:\nfunction myfunction() {\n    \"use strict\";\n    var v = \"This is a strict mode function\";\n}",
+      "tags": ["javascript", "strict-mode", "best-practices"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_056",
+      "question_title": "CheckBox Status",
+      "question_text": "What is the way to get the status of a CheckBox?",
+      "answer_text": "The status can be acquired as follows:\nalert(document.getElementById('checkbox1').checked);\n\nIf the CheckBox is checked, this returns TRUE.",
+      "tags": ["javascript", "dom", "forms", "checkbox"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_057",
+      "question_title": "Client OS Detection",
+      "question_text": "How can the OS of the client machine be detected?",
+      "answer_text": "Use navigator.appVersion string to detect the operating system on the client machine.",
+      "tags": ["javascript", "browser", "detection", "os"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_058",
+      "question_title": "Window.onload vs onDocumentReady",
+      "question_text": "What is a window.onload and onDocumentReady?",
+      "answer_text": "The onload function runs only after all page information is loaded, causing delays.\nonDocumentReady (or DOMContentLoaded) runs code just after the DOM is loaded, allowing earlier manipulation.",
+      "tags": ["javascript", "events", "loading", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_059",
+      "question_title": "Closures",
+      "question_text": "How closures work in JavaScript?",
+      "answer_text": "A closure is a function that has access to its outer function's variables even after the outer function has returned.\n\nExample:\nfunction greeter(name, age) {\n    var message = name + \" says howdy!! He is \" + age + \" years old\";\n    return function greet() {\n        console.log(message);\n    };\n}\n\nvar JamesGreeter = greeter(\"James\", 23);\nJamesGreeter(); // Logs the message",
+      "tags": ["javascript", "closures", "functions", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_060",
+      "question_title": "Appending to Array",
+      "question_text": "How can a value be appended to an array?",
+      "answer_text": "A value can be appended to an array as:\narr[arr.length] = value;",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_061",
+      "question_title": "For-in Loop",
+      "question_text": "What is for-in loop in Javascript?",
+      "answer_text": "The for-in loop is used to loop through the properties of an object.\n\nSyntax:\nfor (variable in object) {\n    // statement or block to execute\n}\n\nIn each iteration, one property from the object is assigned to the variable.",
+      "tags": ["javascript", "loops", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_062",
+      "question_title": "Anonymous Functions",
+      "question_text": "What are the important properties of an anonymous function in JavaScript?",
+      "answer_text": "An anonymous function is declared without a named identifier and is often inaccessible after declaration.\n\nDeclaration example:\nvar anon = function() {\n    alert('I am anonymous');\n};\nanon();",
+      "tags": ["javascript", "functions", "anonymous"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_063",
+      "question_title": "Call vs Apply",
+      "question_text": "What is the difference between .call() and .apply()?",
+      "answer_text": ".call() is used when the number of arguments is known, passing them individually.\n.apply() is used when the number is unknown, passing arguments as an array.\n\nExample:\nsomeObject.myMethod.call(someOtherObject, '<', '>');\nsomeObject.myMethod.apply(someOtherObject, ['<', '>']);",
+      "tags": ["javascript", "functions", "methods", "context"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_064",
+      "question_title": "Event Bubbling",
+      "question_text": "What is event bubbling?",
+      "answer_text": "Event bubbling occurs when DOM elements are nested. If a child element's handler is triggered, the parent's handler will also be triggered, bubbling up through the DOM tree.",
+      "tags": ["javascript", "events", "dom", "bubbling"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_065",
+      "question_title": "Case Sensitivity",
+      "question_text": "Is JavaScript case sensitive? Give its example.",
+      "answer_text": "Yes, JavaScript is case-sensitive. For example, parseInt is different from Parseint.",
+      "tags": ["javascript", "syntax", "case-sensitive"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_066",
+      "question_title": "Boolean Operators",
+      "question_text": "What boolean operators can be used in JavaScript?",
+      "answer_text": "The 'And' Operator (&&), 'Or' Operator (||), and the 'Not' Operator (!) can be used in JavaScript.",
+      "tags": ["javascript", "operators", "boolean"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_067",
+      "question_title": "Targeting Frames",
+      "question_text": "How can a particular frame be targeted, from a hyperlink, in JavaScript?",
+      "answer_text": "Include the name of the required frame in the hyperlink using the 'target' attribute.\n<a href=\"/newpage.htm\" target=\"newframe\">New Page</a>",
+      "tags": ["javascript", "frames", "links", "html"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_068",
+      "question_title": "Break vs Continue",
+      "question_text": "What is the role of break and continue statements?",
+      "answer_text": "The break statement exits the current loop entirely.\nThe continue statement skips to the next iteration of the current loop.",
+      "tags": ["javascript", "loops", "control-flow"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_069",
+      "question_title": "Web Garden vs Web Farm",
+      "question_text": "Write the point of difference between a web garden and a web farm?",
+      "answer_text": "Both are web hosting systems. A web-garden includes many processors in a single server, while a web-farm uses more than one server.",
+      "tags": ["javascript", "web", "hosting", "architecture"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_070",
+      "question_title": "Object Property Assignment",
+      "question_text": "How are object properties assigned?",
+      "answer_text": "Properties are assigned to objects similarly to assigning values to variables.\nExample:\nDocument.form.action=\"submit\";",
+      "tags": ["javascript", "objects", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_071",
+      "question_title": "File Read/Write Method",
+      "question_text": "What is the method for reading and writing a file in JavaScript?",
+      "answer_text": "Using JavaScript extensions (runs from JavaScript Editor), for opening a file:\nfh = fopen(getScriptPath(), 0);",
+      "tags": ["javascript", "files", "io"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_072",
+      "question_title": "DOM Utilization",
+      "question_text": "How are DOM utilized in JavaScript?",
+      "answer_text": "DOM (Document Object Model) allows JavaScript to interact with HTML elements. It enables adding, removing, and modifying elements and attributes, and provides APIs for enhanced web page capabilities.",
+      "tags": ["javascript", "dom", "html", "manipulation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_073",
+      "question_title": "Event Handlers",
+      "question_text": "How are event handlers utilized in JavaScript?",
+      "answer_text": "Event handlers manage actions resulting from user activities (clicking, form filling). They are attributes of objects containing the event name and the action to take when the event occurs.",
+      "tags": ["javascript", "events", "handlers"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_074",
+      "question_title": "Deferred Scripts",
+      "question_text": "What is the role of deferred scripts in JavaScript?",
+      "answer_text": "Deferred scripts delay execution until the HTML parser is running, reducing page loading time and allowing faster display.",
+      "tags": ["javascript", "performance", "loading", "scripts"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_075",
+      "question_title": "Functional Components",
+      "question_text": "What are the various functional components in JavaScript?",
+      "answer_text": "1. First-class functions: Functions can be passed as arguments, returned as values, assigned to variables, or stored in data structures.\n2. Nested functions: Functions defined inside other functions, called each time the main function is invoked.",
+      "tags": ["javascript", "functions", "functional"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_076",
+      "question_title": "JavaScript Errors",
+      "question_text": "Write about the errors shown in JavaScript?",
+      "answer_text": "1. Load-time errors: Occur during page loading due to improper syntax.\n2. Runtime errors: Occur during program execution (e.g., division by zero).\n3. Logical errors: Caused by syntactically correct code with flawed logic (e.g., infinite loops).",
+      "tags": ["javascript", "errors", "debugging"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_077",
+      "question_title": "Screen Objects",
+      "question_text": "What are Screen objects?",
+      "answer_text": "Screen objects read information from the client's screen. Properties include:\n- availHeight: Height of client's screen\n- availWidth: Width of client's screen\n- colorDepth: Bit depth of images\n- height: Total height including taskbar\n- width: Total width including taskbar",
+      "tags": ["javascript", "browser", "screen", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_078",
+      "question_title": "Unshift Method Example",
+      "question_text": "What is the unshift() method?",
+      "answer_text": "The unshift() method adds elements to the beginning of an array.\n\nExample:\nvar name = [\"john\"];\nname.unshift(\"charlie\");\nname.unshift(\"joseph\", \"Jane\");\nconsole.log(name);\n// Output: [\"joseph\", \"Jane\", \"charlie\", \"john\"]",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_079",
+      "question_title": "Escape and Unescape",
+      "question_text": "What is unescape() and escape() functions?",
+      "answer_text": "escape() encodes a string for transfer across a network.\nunescape() decodes an encoded string.\n\nExample:\nescape(\"Hello? How are you!\"); // Hello%3F%20How%20are%20you%21\nunescape(\"Hello%3F%20How%20are%20you%21\"); // Hello? How are you!",
+      "tags": ["javascript", "strings", "encoding", "deprecated"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_080",
+      "question_title": "EncodeURI and DecodeURI",
+      "question_text": "What are the decodeURI() and encodeURI()?",
+      "answer_text": "encodeURI() converts URL into hex coding.\ndecodeURI() converts encoded URL back to normal.\n\nExample:\nencodeURI(\"my test.asp?name=ståle&car=saab\");\ndecodeURI(\"my%20test.asp?name=st%C3%A5le&car=saab\");",
+      "tags": ["javascript", "url", "encoding"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_081",
+      "question_title": "innerHTML Issues",
+      "question_text": "Why you should not use innerHTML in JavaScript?",
+      "answer_text": "innerHTML refreshes content every time, making it slower. It lacks validation, making it easier to insert rogue code and destabilize web pages.",
+      "tags": ["javascript", "dom", "innerhtml", "security"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_082",
+      "question_title": "Three-Dimensional Array",
+      "question_text": "What does the following statement declare?\nvar myArray = [[[]]];",
+      "answer_text": "It declares a three-dimensional array.",
+      "tags": ["javascript", "arrays", "multidimensional"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_083",
+      "question_title": "JavaScript vs ECMAScript",
+      "question_text": "How are JavaScript and ECMA Script related?",
+      "answer_text": "ECMAScript is the specification (rules and guidelines), while JavaScript is a scripting language that implements the ECMAScript specification.",
+      "tags": ["javascript", "ecmascript", "standards"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_084",
+      "question_title": "Namespacing",
+      "question_text": "What is namespacing in JavaScript, and how is it used?",
+      "answer_text": "Namespacing groups functions, variables, etc., under a unique name to improve modularity and enable code reuse.",
+      "tags": ["javascript", "namespacing", "organization", "modules"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_085",
+      "question_title": "Hiding JavaScript Code",
+      "question_text": "How can JavaScript codes be hidden from old browsers that do not support JavaScript?",
+      "answer_text": "Add \"<!--\" after <script> tag and \"//-->\" before </script> tag. Old browsers treat it as an HTML comment, while modern browsers treat it as one-line comments.",
+      "tags": ["javascript", "compatibility", "legacy"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_086",
+      "question_title": "Loop Usage",
+      "question_text": "How to use Loop in JavaScript?",
+      "answer_text": "Loops repeatedly execute code a specific number of times or while a condition is true. They reduce code repetition (e.g., displaying a message 100 times).",
+      "tags": ["javascript", "loops", "control-flow"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_087",
+      "question_title": "Loop Types",
+      "question_text": "How to use Loops in Javascript?",
+      "answer_text": "Main loop types:\n1. for loop\n2. for/in loop\n3. while loop\n4. do…while loop\n\nFor loop syntax:\nfor(statement1; statement2; statement3) {\n    // code to execute\n}\n\nWhile loop syntax:\nwhile(condition) {\n    // code to execute\n}\n\nDo-while syntax:\ndo {\n    // code\n} while (condition);",
+      "tags": ["javascript", "loops", "control-flow", "syntax"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_088",
+      "question_title": "Array Methods",
+      "question_text": "What are the important JavaScript Array Method explain with example?",
+      "answer_text": "Important array methods:\n- length: Number of elements\n- prototype: Add new properties/methods\n- reverse: Reverse array order\n- sort: Sort array items\n- pop: Remove last item\n- shift: Remove first item\n- push: Add item to end\n\nExample:\nvar students = [\"John\", \"Ann\", \"Aaron\"];\nstudents.sort(); // Sorts alphabetically\nstudents.reverse(); // Reverses order\nstudents.pop(); // Removes last item\nstudents.push(\"New\"); // Adds to end",
+      "tags": ["javascript", "arrays", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_089",
+      "question_title": "OOP in JavaScript",
+      "question_text": "What is OOPS Concept in JavaScript?",
+      "answer_text": "JavaScript supports object-oriented programming. Objects simulate real-life entities with properties and methods.\n\nCreation:\nvar objName = new Object();\nobjName.property1 = value1;\nobjName.method1 = function() { /* code */ };\n\nOr:\nvar objName = {property1: value1, method1: function() { /* code */ }};",
+      "tags": ["javascript", "oop", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_090",
+      "question_title": "Loop Through Object Properties",
+      "question_text": "What is Loop Though the Properties of an Object?",
+      "answer_text": "Use for/in loop to iterate through object properties.\n\nSyntax:\nfor (variable in object) {\n    // code\n}\n\nExample:\nvar employee = {first:\"John\", last:\"Doe\", department:\"Accounts\"};\nfor (var x in employee) {\n    console.log(x + \": \" + employee[x]);\n}",
+      "tags": ["javascript", "objects", "loops", "iteration"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_091",
+      "question_title": "JavaScript Unit Testing",
+      "question_text": "What is JavaScript Unit Testing, and what are the challenges in JavaScript Unit Testing?",
+      "answer_text": "JavaScript Unit Testing tests code for web pages/modules. Tests are organized in test suites.\n\nChallenges:\n- Limited browser/runtime support\n- Complex system actions\n- Multiple dependencies\n- DOM manipulation issues\n- Version control errors\n\nSolutions:\n- Avoid global variables\n- Don't manipulate predefined objects\n- Design core functionalities in libraries\n- Create small, less-dependent pieces",
+      "tags": ["javascript", "testing", "unit-testing", "challenges"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_092",
+      "question_title": "Unit Testing Frameworks",
+      "question_text": "What are some important JavaScript Unit Testing Frameworks?",
+      "answer_text": "Popular frameworks:\n1. Unit.js: Open-source assertion library\n2. QUnit: For client/server-side testing\n3. Jasmine: BDD framework\n4. Karma: Test environment\n5. Mocha: Feature-rich testing\n6. Jest: Zero-configuration (Facebook)\n7. AVA: Simple, parallel testing",
+      "tags": ["javascript", "testing", "frameworks", "tools"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_093",
+      "question_title": "QuickSort Algorithm",
+      "question_text": "What is QuickSort Algorithm in JavaScript?",
+      "answer_text": "QuickSort uses Divide and Conquer. It selects a pivot, partitions array around it, and recursively sorts sub-arrays.\n\nSteps:\n1. Choose pivot element\n2. Partition: Elements < pivot go left, > pivot go right\n3. Recursively sort left and right partitions\n\nIt's efficient for large datasets and faster than default sort() for custom sorting.",
+      "tags": ["javascript", "algorithms", "sorting", "quicksort"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_095",
+      "question_title": "DOM Definition",
+      "question_text": "What is DOM in JavaScript?",
+      "answer_text": "DOM (Document Object Model) allows JavaScript to access and manipulate all elements in a web page. The browser creates DOM when the page loads.",
+      "tags": ["javascript", "dom", "html", "manipulation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_096",
+      "question_title": "DOM and Events Usage",
+      "question_text": "How to use DOM and Events?",
+      "answer_text": "DOM methods:\n- getElementById: Access by ID\n- getElementsByTagName: Access by tag\n- createElement: Create new element\n- removeChild: Remove element\n\nEvent handling:\ndocument.getElementById(\"btn\").addEventListener(\"click\", function() {\n    alert(\"Clicked!\");\n});",
+      "tags": ["javascript", "dom", "events", "manipulation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_097",
+      "question_title": "External JavaScript",
+      "question_text": "What is External JavaScript?",
+      "answer_text": "External JavaScript stores code in .js files, referenced in HTML:\n<script src=\"script.js\"></script>\n\nBenefits: Reusability, maintainability, separation of concerns.",
+      "tags": ["javascript", "external", "files", "organization"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_098",
+      "question_title": "Internal vs External JS",
+      "question_text": "When to Use Internal and External JavaScript Code?",
+      "answer_text": "Use internal JavaScript for page-specific, small code snippets.\nUse external JavaScript for reusable code across multiple pages, long code, or easier maintenance.",
+      "tags": ["javascript", "internal", "external", "best-practices"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "jsq_099",
+      "question_title": "Cookies Detailed",
+      "question_text": "What are Cookies in JavaScript?",
+      "answer_text": "Cookies store data on the user's computer. They're key/value pairs for remembering information like login details.\n\nCreate: document.cookie = \"name=value; expires=date; path=/\";\nRead: var x = document.cookie;\nDelete: Set expires to past date.",
+      "tags": ["javascript", "cookies", "storage", "web"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_001",
+      "question_title": "NaN Comparison Edge Case",
+      "question_text": "For which value of `x` the results of the following statements are not the same? if(x <= 100) {...} if(!(x > 100)) {...}",
+      "answer_text": "The statements are not the same when x is `NaN`. For `NaN <= 100`, the result is `false`. For `!(NaN > 100)`, since `NaN > 100` is also `false`, the result is `true`. This also applies to values that convert to `NaN` like `undefined`, arrays, or objects when converted to numbers. Always use `isNaN()` function to reliably check for `NaN` values.",
+      "tags": ["javascript", "nan", "comparison", "edge-cases"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_002",
+      "question_title": "Method Declaration Drawback in Objects",
+      "question_text": "What is the drawback of declaring methods directly in JavaScript objects?",
+      "answer_text": "Declaring methods directly in objects creates a new copy of the method for each instance, which is memory inefficient. Instead, methods should be added to the object's prototype so they're shared across all instances.",
+      "tags": ["javascript", "objects", "methods", "performance", "prototype"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_003",
+      "question_title": "Closures in JavaScript",
+      "question_text": "What is \"closure\" in javascript? Can you provide an example?",
+      "answer_text": "A closure is a function that has access to variables from its outer (enclosing) function's scope, even after the outer function has returned. Closures have access to variables in three scopes: their own scope, their parent function's scope, and the global scope.",
+      "tags": ["javascript", "closures", "scope", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_006",
+      "question_title": "Checking Array Type",
+      "question_text": "How to check if an object is an array or not?",
+      "answer_text": "Recommended: Use `Array.isArray()` in modern environments, or the `toString` method for broader compatibility.",
+      "tags": ["javascript", "arrays", "type-checking", "validation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_007",
+      "question_title": "Delete Operator Behavior",
+      "question_text": "What will be the output of the following code?\nvar output = (function(x) {\n  delete x;\n  return x;\n})(0);\nconsole.log(output);",
+      "answer_text": "The output will be `0`. The `delete` operator is used to delete properties from objects, not variables. Here `x` is a local variable (function parameter), not an object property, so `delete` has no effect.",
+      "tags": ["javascript", "delete", "operators", "variables"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_008",
+      "question_title": "Delete Operator on Global Variable",
+      "question_text": "What will be the output of the following code?\nvar x = 1;\nvar output = (function() {\n  delete x;\n  return x;\n})();\nconsole.log(output);",
+      "answer_text": "The output will be `1`. The `delete` operator only works on object properties, not variables. Here `x` is a global variable of type `number`, not a property, so `delete` has no effect.",
+      "tags": ["javascript", "delete", "global-variables", "operators"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_009",
+      "question_title": "Delete Object Property",
+      "question_text": "What will be the output of the following code?\nvar x = { foo: 1 };\nvar output = (function() {\n  delete x.foo;\n  return x.foo;\n})();\nconsole.log(output);",
+      "answer_text": "The output will be `undefined`. Here `x` is an object with property `foo`. The `delete` operator successfully removes the `foo` property, so when we try to access `x.foo` afterwards, it returns `undefined`.",
+      "tags": ["javascript", "delete", "objects", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_010",
+      "question_title": "Delete Prototype Property",
+      "question_text": "What will be the output of the following code?\nvar Employee = { company: 'xyz' };\nvar emp1 = Object.create(Employee);\ndelete emp1.company;\nconsole.log(emp1.company);",
+      "answer_text": "The output will be `'xyz'`. The `emp1` object inherits `company` as a prototype property from `Employee`. The `delete` operator only deletes own properties, not inherited ones.",
+      "tags": ["javascript", "delete", "prototype", "inheritance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_011",
+      "question_title": "Array Delete Behavior",
+      "question_text": "What is `undefined x 1` in JavaScript?\nvar trees = [\"redwood\", \"bay\", \"cedar\", \"oak\", \"maple\"];\ndelete trees[3];",
+      "answer_text": "When you delete an array element using `delete trees[3]`, Chrome displays `undefined × 1` at the deleted index, while Firefox shows `undefined`. The array length remains unchanged.",
+      "tags": ["javascript", "arrays", "delete", "browser-differences"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_012",
+      "question_title": "Array Length After Delete",
+      "question_text": "What will be the output of the following code?\nvar trees = [\"xyz\", \"xxxx\", \"test\", \"ryan\", \"apple\"];\ndelete trees[3];\nconsole.log(trees.length);",
+      "answer_text": "The output will be `5`. The `delete` operator removes the value at the specified index but does not change the array's length.",
+      "tags": ["javascript", "arrays", "delete", "length"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_013",
+      "question_title": "Boolean Type Coercion",
+      "question_text": "What will be the output of the following code?\nvar bar = true;\nconsole.log(bar + 0);\nconsole.log(bar + \"xyz\");\nconsole.log(bar + true);\nconsole.log(bar + false);",
+      "answer_text": "Output: `1, \"truexyz\", 2, 1`",
+      "tags": ["javascript", "type-coercion", "boolean", "operators"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_014",
+      "question_title": "Operator Associativity",
+      "question_text": "What will be the output of the following code?\nvar z = 1, y = z = typeof y;\nconsole.log(y);",
+      "answer_text": "Output: `\"undefined\"`\n\nThe assignment operator has right-to-left associativity.",
+      "tags": ["javascript", "operators", "associativity", "typeof"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_015",
+      "question_title": "Function Hoisting",
+      "question_text": "What will be the output of the following code?\nbar();\n(function abc(){console.log('something')})();\nfunction bar(){console.log('bar got called')};",
+      "answer_text": "Function declarations are hoisted, so `bar()` can be called before its declaration.",
+      "tags": ["javascript", "hoisting", "iife", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_016",
+      "question_title": "Function Expression Hoisting",
+      "question_text": "In which case the function definition is not hoisted in JavaScript?",
+      "answer_text": "Function expressions are not hoisted. Only the variable declaration is hoisted, not the function assignment.",
+      "tags": ["javascript", "hoisting", "function-expressions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_017",
+      "question_title": "Variable Hoisting in IIFE",
+      "question_text": "What will be the output of the following code?\nvar salary = \"1000$\";\n(function () {\n  console.log(\"Original salary was \" + salary);\n  var salary = \"5000$\";\n  console.log(\"My New Salary \" + salary);\n})();",
+      "answer_text": "Output: `undefined, 5000$`\n\nDue to hoisting, the `salary` variable inside the IIFE is declared at the top of the function scope before execution.",
+      "tags": ["javascript", "hoisting", "iife", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_018",
+      "question_title": "Typeof vs Instanceof",
+      "question_text": "What's the difference between `typeof` and `instanceof`?",
+      "answer_text": "`typeof` returns a string indicating the type of a value (primitive types). `instanceof` checks if an object is an instance of a constructor (prototype chain).",
+      "tags": ["javascript", "typeof", "instanceof", "type-checking"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_019",
+      "question_title": "Object Length Calculation",
+      "question_text": "Calculate the length of the associative array:\nvar counterArray = { A: 3, B: 4 };\ncounterArray[\"C\"] = 1;",
+      "answer_text": "Recommended: `Object.keys(obj).length`",
+      "tags": ["javascript", "objects", "properties", "length"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_020",
+      "question_title": "Function vs Method vs Constructor",
+      "question_text": "Difference between Function, Method and Constructor calls in JavaScript.",
+      "answer_text": "All three are function calls with different contexts:\n1. **Function call**: `this` refers to global/window\n2. **Method call**: `this` refers to the object\n3. **Constructor call**: `this` refers to new instance",
+      "tags": ["javascript", "functions", "methods", "constructors", "this"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_021",
+      "question_title": "Chained Assignment Result",
+      "question_text": "What would be the output of the following code?\nfunction User(name) { this.name = name || \"JsGeeks\"; }\nvar person = new User(\"xyz\")[\"location\"] = \"USA\";\nconsole.log(person);",
+      "answer_text": "Output: `\"USA\"`\n\nThe expression creates a new User object, adds a `location` property with value `\"USA\"`, and the assignment returns `\"USA\"`.",
+      "tags": ["javascript", "assignment", "constructors", "operators"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_022",
+      "question_title": "Service Workers",
+      "question_text": "What are Service Workers and when can you use them?",
+      "answer_text": "Service Workers are scripts that run in the background, enabling offline-first experiences by intercepting network requests.",
+      "tags": ["javascript", "service-workers", "pwa", "offline", "caching"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_023",
+      "question_title": "Method vs Function",
+      "question_text": "What is the difference between a method and a function in javascript?",
+      "answer_text": "A method is a function that's a property of an object and called in the context of that object. A function is standalone.\n\nKey difference: Context (`this` binding)",
+      "tags": ["javascript", "functions", "methods", "this", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_024",
+      "question_title": "IIFE Patterns",
+      "question_text": "What is IIFE (Immediately Invoked Function Expression) and how it can be useful?",
+      "answer_text": "IIFE is a function that runs immediately after definition. Benefits include isolation, module pattern, avoiding naming conflicts, and useful in loops with closures.",
+      "tags": ["javascript", "iife", "scope", "modules", "closures"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_025",
+      "question_title": "Singleton Pattern",
+      "question_text": "Describe Singleton Pattern In JavaScript",
+      "answer_text": "Singleton ensures only one instance of a class exists.",
+      "tags": ["javascript", "design-patterns", "singleton", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_026",
+      "question_title": "Object Creation Methods",
+      "question_text": "What are the ways of creating objects in JavaScript?",
+      "answer_text": "1. Object literal\n2. Constructor function\n3. Object.create()\n4. Class (ES6)\n5. Factory function\n6. Using `new Object()`",
+      "tags": ["javascript", "objects", "creation", "patterns"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_028",
+      "question_title": "Undefined Property Detection",
+      "question_text": "Best way to detect `undefined` object property in JavaScript.",
+      "answer_text": "Use `typeof` operator - safest as it works even if `undefined` variable is overwritten.",
+      "tags": ["javascript", "undefined", "properties", "type-checking"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_030",
+      "question_title": "JavaScript Promises",
+      "question_text": "What are promises and how they are useful?",
+      "answer_text": "Promises handle asynchronous operations, avoiding callback hell. They represent a future value with states: pending, fulfilled, rejected.",
+      "tags": ["javascript", "promises", "asynchronous", "callbacks"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_031",
+      "question_title": "Check if Key Exists in Object",
+      "question_text": "How to check whether a key exist in a JavaScript object or not.",
+      "answer_text": "Use `hasOwnProperty()` to check only own properties.",
+      "tags": ["javascript", "objects", "properties", "validation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_032",
+      "question_title": "NaN Properties and Issues",
+      "question_text": "What is NaN, why do we need it, and when can it break the page?",
+      "answer_text": "`NaN` means \"Not a Number\" - a special value representing invalid mathematical operations.",
+      "tags": ["javascript", "nan", "numbers", "validation", "errors"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_033",
+      "question_title": "Fix Loop Closure Issue",
+      "question_text": "Fix the bug using ES5 only:\nvar arr = [10, 32, 65, 2];\nfor (var i = 0; i < arr.length; i++) {\n  setTimeout(function() {\n    console.log('The index of this number is: ' + i);\n  }, 3000);\n}",
+      "answer_text": "ES5 fix using IIFE to capture `i`.",
+      "tags": ["javascript", "closures", "settimeout", "loops", "es5"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_034",
+      "question_title": "Check if Value is Array",
+      "question_text": "How to check if the value of a variable in an array?",
+      "answer_text": "`Array.isArray()` is best for modern browsers.",
+      "tags": ["javascript", "arrays", "type-checking", "validation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_035",
+      "question_title": "Detect Reference Types",
+      "question_text": "Best way to detect reference values of any type in JavaScript?",
+      "answer_text": "Using `instanceof` for specific types and `typeof` for functions.",
+      "tags": ["javascript", "type-checking", "reference-types", "instanceof"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_036",
+      "question_title": "Object.create Method",
+      "question_text": "How does Object.create method works JavaScript?",
+      "answer_text": "`Object.create()` creates a new object with specified prototype. Useful for prototypal inheritance without constructors.",
+      "tags": ["javascript", "objects", "inheritance", "prototype", "object-create"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_037",
+      "question_title": "Constructor Inheritance",
+      "question_text": "How to use constructor functions for inheritance in JavaScript?",
+      "answer_text": "Constructor inheritance example with prototype chain setup.",
+      "tags": ["javascript", "inheritance", "constructors", "prototype"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_038",
+      "question_title": "Prevent Object Modification",
+      "question_text": "How we can prevent modification of object in JavaScript?",
+      "answer_text": "Three levels: `Object.preventExtensions()`, `Object.seal()`, `Object.freeze()`. Use strict mode to catch errors.",
+      "tags": ["javascript", "objects", "immutability", "security"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_041",
+      "question_title": "Non-enumerable Properties",
+      "question_text": "What is non-enumerable property in JavaScript and how you can create one?",
+      "answer_text": "Non-enumerable properties don't show up in `for...in` loops or `Object.keys()`. Create with `Object.defineProperty()`.",
+      "tags": ["javascript", "objects", "properties", "enumerable"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_042",
+      "question_title": "Callback Hell to Async/Await",
+      "question_text": "How to replace callbackhell with Promise or Async/Await with examples?",
+      "answer_text": "Promises and Async/Await provide much cleaner, linear code with better error handling compared to nested callbacks.",
+      "tags": ["javascript", "async", "promises", "async-await", "callbacks"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_043",
+      "question_title": "String Assignment Behavior",
+      "question_text": "What would be the output of following code?\nvar strA = \"hi there\";\nvar strB = strA;\nstrB=\"bye there!\";\nconsole.log(strA)",
+      "answer_text": "Output: `'hi there'`\n\nStrings are passed by value (copied), so modifying `strB` doesn't affect `strA`.",
+      "tags": ["javascript", "strings", "assignment", "primitives"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_044",
+      "question_title": "Object Assignment Behavior",
+      "question_text": "What would be the output of following code?\nvar objA = {prop1: 42};\nvar objB = objA;\nobjB.prop1 = 90;\nconsole.log(objA)",
+      "answer_text": "Output: `{prop1: 90}`\n\nObjects are passed by reference, so `objA` and `objB` point to the same object in memory.",
+      "tags": ["javascript", "objects", "assignment", "reference"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_045",
+      "question_title": "Object Reassignment",
+      "question_text": "What would be the output of following code?\nvar objA = {prop1: 42};\nvar objB = objA;\nobjB = {};\nconsole.log(objA)",
+      "answer_text": "Output: `{prop1: 42}`\n\nReassigning `objB` to a new object doesn't affect `objA` - they now reference different objects.",
+      "tags": ["javascript", "objects", "assignment", "reference"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_046",
+      "question_title": "Array Assignment by Reference",
+      "question_text": "What would be the output of following code?\nvar arrA = [0,1,2,3,4,5];\nvar arrB = arrA;\narrB[0]=42;\nconsole.log(arrA)",
+      "answer_text": "Output: `[42,1,2,3,4,5]`\n\nArrays are objects and passed by reference, so both variables point to the same array.",
+      "tags": ["javascript", "arrays", "assignment", "reference"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_047",
+      "question_title": "Array Slice Copy",
+      "question_text": "What would be the output of following code?\nvar arrA = [0,1,2,3,4,5];\nvar arrB = arrA.slice();\narrB[0]=42;\nconsole.log(arrA)",
+      "answer_text": "Output: `[0,1,2,3,4,5]`\n\n`slice()` creates a shallow copy, so `arrA` and `arrB` are different arrays.",
+      "tags": ["javascript", "arrays", "slice", "copy"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_048",
+      "question_title": "Array of Objects Reference",
+      "question_text": "What would be the output of following code?\nvar arrA = [{prop1: \"value\"}, {someProp: \"also value\"}, 3,4,5];\nvar arrB = arrA;\narrB[0].prop1=42;\nconsole.log(arrA);",
+      "answer_text": "Output: `[{prop1: 42}, {someProp: \"also value\"}, 3,4,5]`\n\nArrays are objects, so both reference the same array. Changing object properties within the array affects both references.",
+      "tags": ["javascript", "arrays", "objects", "reference"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_049",
+      "question_title": "Variable Hoisting Reference Error",
+      "question_text": "What would be the output: console.log(employeeId);",
+      "answer_text": "ReferenceError: employeeId is not defined\n\nVariable is used before declaration without `var`/`let`/`const`.",
+      "tags": ["javascript", "hoisting", "reference-error", "variables"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_050",
+      "question_title": "Variable Hoisting with Undefined",
+      "question_text": "What would be the output of:\nconsole.log(employeeId);\nvar employeeId = '19000';",
+      "answer_text": "Output: `undefined`\n\nVariable declaration is hoisted but initialization is not, so `employeeId` is `undefined` before assignment.",
+      "tags": ["javascript", "hoisting", "undefined", "variables"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_051",
+      "question_title": "Hoisting in IIFE Scope",
+      "question_text": "What would be the output of:\nvar employeeId = '1234abe';\n(function(){\n\tconsole.log(employeeId);\n\tvar employeeId = '122345';\n})();",
+      "answer_text": "Output: `undefined`\n\nInside IIFE, `employeeId` declaration is hoisted, shadowing the outer variable.",
+      "tags": ["javascript", "hoisting", "iife", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_052",
+      "question_title": "Nested Function Hoisting",
+      "question_text": "What would be the output of:\nvar employeeId = '1234abe';\n(function() {\n\tconsole.log(employeeId);\n\tvar employeeId = '122345';\n\t(function() {\n\t\tvar employeeId = 'abc1234';\n\t}());\n}());",
+      "answer_text": "Output: `undefined`\n\nOuter IIFE's `employeeId` is hoisted, shadowing the global variable.",
+      "tags": ["javascript", "hoisting", "iife", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_053",
+      "question_title": "Function Expression Hoisting Type",
+      "question_text": "What would be the output of:\n(function() {\n\tconsole.log(typeof displayFunc);\n\tvar displayFunc = function(){\n\t\tconsole.log(\"Hi I am inside displayFunc\");\n\t}\n}());",
+      "answer_text": "Output: `undefined`\n\nVariable `displayFunc` is hoisted but not initialized, so `typeof` returns `undefined`.",
+      "tags": ["javascript", "hoisting", "function-expressions", "typeof"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_054",
+      "question_title": "Global Variable Modification",
+      "question_text": "What would be the output of:\nvar employeeId = 'abc123';\nfunction foo(){\n\temployeeId = '123bcd';\n\treturn;\n}\nfoo();\nconsole.log(employeeId);",
+      "answer_text": "Output: `'123bcd'`\n\nFunction modifies the global `employeeId` variable.",
+      "tags": ["javascript", "global-variables", "scope", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_055",
+      "question_title": "Function Hoisting Override",
+      "question_text": "What would be the output of:\nvar employeeId = 'abc123';\nfunction foo() {\n\temployeeId = '123bcd';\n\treturn;\n\tfunction employeeId() {}\n}\nfoo();\nconsole.log(employeeId);",
+      "answer_text": "Output: `'abc123'`\n\nFunction declaration `employeeId` is hoisted inside `foo()`, creating a local variable that shadows the global one.",
+      "tags": ["javascript", "hoisting", "functions", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_056",
+      "question_title": "Nested Function Type",
+      "question_text": "What would be the output of:\nvar employeeId = 'abc123';\nfunction foo() {\n\temployeeId();\n\treturn;\n\tfunction employeeId() {\n\t\tconsole.log(typeof employeeId);\n\t}\n}\nfoo();",
+      "answer_text": "Output: `'function'`\n\nFunction declaration `employeeId` is hoisted, and inside it, `typeof employeeId` refers to the function itself.",
+      "tags": ["javascript", "hoisting", "functions", "typeof"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_057",
+      "question_title": "Hoisting Order in Functions",
+      "question_text": "What would be the output of:\nfunction foo() {\n\temployeeId();\n\tvar product = 'Car';\n\treturn;\n\tfunction employeeId() {\n\t\tconsole.log(product);\n\t}\n}\nfoo();",
+      "answer_text": "Output: `undefined`\n\n`product` variable is hoisted but not initialized when `employeeId()` is called.",
+      "tags": ["javascript", "hoisting", "functions", "variables"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_058",
+      "question_title": "Mutual Function Hoisting",
+      "question_text": "What would be the output of:\n(function foo() {\n\tbar();\n\tfunction bar() {\n\t\tabc();\n\t\tconsole.log(typeof abc);\n\t}\n\tfunction abc() {\n\t\tconsole.log(typeof bar);\n\t}\n}());",
+      "answer_text": "Output: `function function`\n\nBoth functions are hoisted, so they can call each other.",
+      "tags": ["javascript", "hoisting", "functions", "iife"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_059",
+      "question_title": "Enumerable Property Keys",
+      "question_text": "What would be the output of:\n(function() {\n\t'use strict';\n\tvar person = { name: 'John' };\n\tperson.salary = '10000$';\n\tperson['country'] = 'USA';\n\tObject.defineProperty(person, 'phoneNo', {\n\t\tvalue: '8888888888',\n\t\tenumerable: true\n\t})\n\tconsole.log(Object.keys(person));\n})();",
+      "answer_text": "Output: `[\"name\", \"salary\", \"country\", \"phoneNo\"]`\n\nAll properties are enumerable, so `Object.keys()` returns all property names.",
+      "tags": ["javascript", "objects", "enumerable", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_060",
+      "question_title": "Non-enumerable Property Keys",
+      "question_text": "What would be the output of:\n(function() {\n\t'use strict';\n\tvar person = { name: 'John' };\n\tperson.salary = '10000$';\n\tperson['country'] = 'USA';\n\tObject.defineProperty(person, 'phoneNo', {\n\t\tvalue: '8888888888',\n\t\tenumerable: false\n\t})\n\tconsole.log(Object.keys(person));\n})();",
+      "answer_text": "Output: `[\"name\", \"salary\", \"country\"]`\n\n`phoneNo` is non-enumerable, so it doesn't appear in `Object.keys()`.",
+      "tags": ["javascript", "objects", "enumerable", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_061",
+      "question_title": "Object Equality Comparison",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = { foo: 'foo', bar: 'bar' };\n\tvar objB = { foo: 'foo', bar: 'bar' };\n\tconsole.log(objA == objB);\n\tconsole.log(objA === objB);\n}());",
+      "answer_text": "Output: `false false`\n\nObjects are compared by reference, not content. Two different objects are never equal.",
+      "tags": ["javascript", "objects", "equality", "comparison"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_062",
+      "question_title": "Object Constructor Equality",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = new Object({foo: \"foo\"});\n\tvar objB = new Object({foo: \"foo\"});\n\tconsole.log(objA == objB);\n\tconsole.log(objA === objB);\n}());",
+      "answer_text": "Output: `false false`\n\n`new Object()` creates new object instances each time, so they're different objects.",
+      "tags": ["javascript", "objects", "equality", "constructors"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_063",
+      "question_title": "Object.create Equality",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = Object.create({ foo: 'foo' });\n\tconsole.log(objA == objB);\n\tconsole.log(objA === objB);\n}());",
+      "answer_text": "Output: `false false`\n\n`Object.create()` creates new objects each time, even with same prototype.",
+      "tags": ["javascript", "objects", "equality", "object-create"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_064",
+      "question_title": "Prototype Chain Equality",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = Object.create(objA);\n\tconsole.log(objA == objB);\n\tconsole.log(objA === objB);\n}());",
+      "answer_text": "Output: `false false`\n\n`objB` is a different object instance that inherits from `objA`.",
+      "tags": ["javascript", "objects", "equality", "prototype"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_065",
+      "question_title": "Object toString Equality",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = Object.create(objA);\n\tconsole.log(objA.toString() == objB.toString());\n\tconsole.log(objA.toString() === objB.toString());\n}());",
+      "answer_text": "Output: `true true`\n\nBoth inherit `toString()` from Object.prototype, returning same default string.",
+      "tags": ["javascript", "objects", "tostring", "equality"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_066",
+      "question_title": "Object Reference Equality",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = objA;\n\tconsole.log(objA == objB);\n\tconsole.log(objA === objB);\n\tconsole.log(objA.toString() == objB.toString());\n\tconsole.log(objA.toString() === objB.toString());\n}());",
+      "answer_text": "Output: `true true true true`\n\n`objB` references same object as `objA`, so all comparisons are true.",
+      "tags": ["javascript", "objects", "reference", "equality"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_067",
+      "question_title": "Object Property Mutation",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = objA;\n\tobjB.foo = 'bar';\n\tconsole.log(objA.foo);\n\tconsole.log(objB.foo);\n}());",
+      "answer_text": "Output: `bar bar`\n\nBoth reference same object, so modifying property affects both references.",
+      "tags": ["javascript", "objects", "properties", "mutation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_068",
+      "question_title": "Delete Inherited Property",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = Object.create({ foo: 'foo' });\n\tvar objB = objA;\n\tobjB.foo = 'bar';\n\tdelete objA.foo;\n\tconsole.log(objA.foo);\n\tconsole.log(objB.foo);\n}());",
+      "answer_text": "Output: `foo foo`\n\nDeleting own property `foo` reveals inherited property `foo` from prototype.",
+      "tags": ["javascript", "objects", "delete", "inheritance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_069",
+      "question_title": "Delete Own Property",
+      "question_text": "What would be the output of:\n(function() {\n\tvar objA = { foo: 'foo' };\n\tvar objB = objA;\n\tobjB.foo = 'bar';\n\tdelete objA.foo;\n\tconsole.log(objA.foo);\n\tconsole.log(objB.foo);\n}());",
+      "answer_text": "Output: `undefined undefined`\n\nDeleting property from object affects both references since they point to same object.",
+      "tags": ["javascript", "objects", "delete", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_070",
+      "question_title": "Array Constructor Single Argument",
+      "question_text": "What would be the output of:\n(function() {\n\tvar array = new Array('100');\n\tconsole.log(array);\n\tconsole.log(array.length);\n}());",
+      "answer_text": "Output: `[\"100\"] 1`\n\nSingle string argument creates array with that string as element.",
+      "tags": ["javascript", "arrays", "constructor"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_071",
+      "question_title": "Array Constructor Variations",
+      "question_text": "What would be the output of:\n(function() {\n\tvar array1 = [];\n\tvar array2 = new Array(100);\n\tvar array3 = new Array(['1',2,'3',4,5.6]);\n\tconsole.log(array1);\n\tconsole.log(array2);\n\tconsole.log(array3);\n\tconsole.log(array3.length);\n}());",
+      "answer_text": "Output: `[] [] [Array[5]] 1`\n\n`array3` contains a single element which is an array.",
+      "tags": ["javascript", "arrays", "constructor"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_072",
+      "question_title": "Array Length After Sparse Element",
+      "question_text": "What would be the output of:\n(function () {\n  var array = new Array('a', 'b', 'c', 'd', 'e');\n  array[10] = 'f';\n  delete array[10];\n  console.log(array.length);\n}());",
+      "answer_text": "Output: `11`\n\nSetting index 10 extends array length to 11. `delete` removes value but not the index.",
+      "tags": ["javascript", "arrays", "length", "sparse"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_073",
+      "question_title": "Array Push Method",
+      "question_text": "What would be the output of:\n(function(){\n\tvar animal = ['cow','horse'];\n\tanimal.push('cat');\n\tanimal.push('dog','rat','goat');\n\tconsole.log(animal.length);\n})();",
+      "answer_text": "Output: `6`\n\n`push()` adds elements to end, can add multiple elements at once.",
+      "tags": ["javascript", "arrays", "push", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_074",
+      "question_title": "Array Unshift Method",
+      "question_text": "What would be the output of:\n(function(){\n\tvar animal = ['cow','horse'];\n\tanimal.push('cat');\n\tanimal.unshift('dog','rat','goat');\n\tconsole.log(animal);\n})();",
+      "answer_text": "Output: `['dog', 'rat', 'goat', 'cow', 'horse', 'cat']`\n\n`unshift()` adds elements to beginning of array.",
+      "tags": ["javascript", "arrays", "unshift", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_075",
+      "question_title": "Array indexOf Method",
+      "question_text": "What would be the output of:\n(function(){\n\tvar array = [1,2,3,4,5];\n\tconsole.log(array.indexOf(2));\n\tconsole.log([{name: 'John'},{name : 'John'}].indexOf({name:'John'}));\n\tconsole.log([[1],[2],[3],[4]].indexOf([3]));\n\tconsole.log(\"abcdefgh\".indexOf('e'));\n})();",
+      "answer_text": "Output: `1 -1 -1 4`\n\n`indexOf()` uses strict equality (===), so objects/arrays with same content but different references return -1.",
+      "tags": ["javascript", "arrays", "indexof", "equality"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_076",
+      "question_title": "Array indexOf with Start Index",
+      "question_text": "What would be the output of:\n(function(){\n\tvar array = [1,2,3,4,5,1,2,3,4,5,6];\n\tconsole.log(array.indexOf(2));\n\tconsole.log(array.indexOf(2,3));\n\tconsole.log(array.indexOf(2,10));\n})();",
+      "answer_text": "Output: `1 6 -1`\n\nSecond parameter is start index for search.",
+      "tags": ["javascript", "arrays", "indexof", "search"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_077",
+      "question_title": "Array Filter and Some Methods",
+      "question_text": "What would be the output of:\n(function(){\n\tvar numbers = [2,3,4,8,9,11,13,12,16];\n\tvar even = numbers.filter(function(element, index){\n\t\treturn element % 2 === 0;\n\t});\n\tconsole.log(even);\n\tvar containsDivisibleby3 = numbers.some(function(element, index){\n\t\treturn element % 3 === 0;\n\t});\n\tconsole.log(containsDivisibleby3);\t\n})();",
+      "answer_text": "Output: `[2,4,8,12,16] true`\n\n`filter()` returns new array with matching elements. `some()` returns true if any element matches.",
+      "tags": ["javascript", "arrays", "filter", "some", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_078",
+      "question_title": "Array Filter with Boolean",
+      "question_text": "What would be the output of:\n(function(){\n\tvar containers = [2,0,false,\"\", '12', true];\n\tvar containers = containers.filter(Boolean);\n\tconsole.log(containers);\n\tvar containers = containers.filter(Number);\n\tconsole.log(containers);\n\tvar containers = containers.filter(String);\n\tconsole.log(containers);\n\tvar containers = containers.filter(Object);\n\tconsole.log(containers);\t\t\n})();",
+      "answer_text": "Output: `[2,'12',true] [2,'12',true] [2,'12',true] [2,'12',true]`\n\n`Boolean`, `Number`, `String`, `Object` as constructors all return truthy for non-empty values.",
+      "tags": ["javascript", "arrays", "filter", "boolean", "type-coercion"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_079",
+      "question_title": "Array Slice Method",
+      "question_text": "What would be the output of:\n(function(){\n\tvar list = ['foo','bar','john','ritz'];\n\tconsole.log(list.slice(1));\t\n\tconsole.log(list.slice(1,3));\n\tconsole.log(list.slice());\n\tconsole.log(list.slice(2,2));\n\tconsole.log(list);\t\t\t\t\n})();",
+      "answer_text": "Output: `['bar','john','ritz'] ['bar','john'] ['foo','bar','john','ritz'] [] ['foo','bar','john','ritz']`\n\n`slice()` returns shallow copy, doesn't modify original array.",
+      "tags": ["javascript", "arrays", "slice", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_080",
+      "question_title": "Array Splice Method",
+      "question_text": "What would be the output of:\n(function(){\n\tvar list = ['foo','bar','john'];\n\tconsole.log(list.splice(1));\t\t\n\tconsole.log(list.splice(1,2));\n\tconsole.log(list);\t\t\t\n})();",
+      "answer_text": "Output: `['bar','john'] [] ['foo']`\n\n`splice()` modifies original array. First call removes from index 1, second call has no effect (array already modified).",
+      "tags": ["javascript", "arrays", "splice", "methods"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_081",
+      "question_title": "Array Sort Default Behavior",
+      "question_text": "What would be the output of:\n(function(){\n\tvar arrayNumb = [2, 8, 15, 16, 23, 42];\n\tarrayNumb.sort();\n\tconsole.log(arrayNumb);\n})();",
+      "answer_text": "Output: `[15,16,2,23,42,8]`\n\nDefault `sort()` converts elements to strings and compares UTF-16 code units.",
+      "tags": ["javascript", "arrays", "sort", "string-conversion"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_082",
+      "question_title": "This Context in Nested Functions",
+      "question_text": "What would be the output of:\nfunction funcA(){\n\tconsole.log(\"funcA \", this);\n\t(function innerFuncA1(){\n\t\tconsole.log(\"innerFunc1\", this);\n\t\t(function innerFunA11(){\n\t\t\tconsole.log(\"innerFunA11\", this);\n\t\t})();\n\t})();\n}\nconsole.log(funcA());",
+      "answer_text": "Output: `funcA Window {...} innerFunc1 Window {...} innerFunA11 Window {...}`\n\nRegular functions (not methods) have `this` as global/window in non-strict mode.",
+      "tags": ["javascript", "this", "context", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_083",
+      "question_title": "This in Object IIFE",
+      "question_text": "What would be the output of:\nvar obj = {\n\tmessage: \"Hello\",\n\tinnerMessage: !(function() {\n\t\tconsole.log(this.message);\n\t})()\n};\nconsole.log(obj.innerMessage);",
+      "answer_text": "Output: `undefined true`\n\nIIFE's `this` is global/window, not the object. `!undefined` is `true`.",
+      "tags": ["javascript", "this", "iife", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_084",
+      "question_title": "Method This Context",
+      "question_text": "What would be the output of:\nvar obj = {\n\tmessage: \"Hello\",\n\tinnerMessage: function() {\n\t\treturn this.message;\n\t}\n};\nconsole.log(obj.innerMessage());",
+      "answer_text": "Output: `Hello`\n\nMethod called on object has `this` as the object.",
+      "tags": ["javascript", "this", "methods", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_085",
+      "question_title": "This in Nested IIFE",
+      "question_text": "What would be the output of:\nvar obj = {\n  message: 'Hello',\n  innerMessage: function () {\n    (function () {\n      console.log(this.message);\n    }());\n  }\n};\nconsole.log(obj.innerMessage());",
+      "answer_text": "Output: `undefined`\n\nNested IIFE has global/window as `this`, not the object.",
+      "tags": ["javascript", "this", "iife", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_086",
+      "question_title": "Self Pattern for This",
+      "question_text": "What would be the output of:\nvar obj = {\n  message: 'Hello',\n  innerMessage: function () {\n  \tvar self = this;\n    (function () {\n      console.log(self.message);\n    }());\n  }\n};\nconsole.log(obj.innerMessage());",
+      "answer_text": "Output: `'Hello'`\n\nUsing `self` pattern captures `this` reference for nested functions.",
+      "tags": ["javascript", "this", "closures", "self-pattern"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_087",
+      "question_title": "Function Property vs This",
+      "question_text": "What would be the output of:\nfunction myFunc(){\n\tconsole.log(this.message);\n}\nmyFunc.message = \"Hi John\";\nconsole.log(myFunc());",
+      "answer_text": "Output: `undefined`\n\nFunction called directly has global/window as `this`, not function object itself.",
+      "tags": ["javascript", "this", "functions", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_088",
+      "question_title": "Function Property Access",
+      "question_text": "What would be the output of:\nfunction myFunc(){\n\tconsole.log(myFunc.message);\n}\nmyFunc.message = \"Hi John\";\nconsole.log(myFunc());",
+      "answer_text": "Output: `'Hi John'`\n\nDirect reference to function property, not using `this`.",
+      "tags": ["javascript", "functions", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_089",
+      "question_title": "Function Property Assignment Inside",
+      "question_text": "What would be the output of:\nfunction myFunc() {\n  myFunc.message = 'Hi John';\n  console.log(myFunc.message);\n}\nconsole.log(myFunc());",
+      "answer_text": "Output: `'Hi John'`\n\nFunction can access and modify its own properties.",
+      "tags": ["javascript", "functions", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_090",
+      "question_title": "Function length Property",
+      "question_text": "What would be the output of:\nfunction myFunc(param1,param2) {\n  console.log(myFunc.length);\n}\nconsole.log(myFunc());\nconsole.log(myFunc(\"a\",\"b\"));\nconsole.log(myFunc(\"a\",\"b\",\"c\",\"d\"));",
+      "answer_text": "Output: `2 2 2`\n\n`function.length` returns number of declared parameters, not arguments passed.",
+      "tags": ["javascript", "functions", "length", "parameters"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_091",
+      "question_title": "Arguments length Property",
+      "question_text": "What would be the output of:\nfunction myFunc() {\n  console.log(arguments.length);\n}\nconsole.log(myFunc());\nconsole.log(myFunc(\"a\",\"b\"));\nconsole.log(myFunc(\"a\",\"b\",\"c\",\"d\"));",
+      "answer_text": "Output: `0 2 4`\n\n`arguments.length` returns number of arguments actually passed.",
+      "tags": ["javascript", "functions", "arguments", "length"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_092",
+      "question_title": "Constructor vs Function Properties",
+      "question_text": "What would be the output of:\nfunction Person(name, age){\n\tthis.name = name || \"John\";\n\tthis.age = age || 24;\n\tthis.displayName = function(){\n\t\tconsole.log(this.name);\n\t}\n}\nPerson.name = \"John\";\nPerson.displayName = function(){\n\tconsole.log(this.name);\n}\nvar person1 = new Person('John');\nperson1.displayName();\nPerson.displayName();",
+      "answer_text": "Output: `John Person`\n\nInstance method uses instance property. Function property uses function name (`Person`).",
+      "tags": ["javascript", "constructors", "functions", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_093",
+      "question_title": "Return Object from Constructor",
+      "question_text": "What would be the output of:\nfunction passWordMngr() {\n\tvar password = '12345678';\n\tthis.userName = 'John';\n\treturn {\n\t\tpwd: password\n\t};\n}\nvar userInfo = passWordMngr();\nconsole.log(userInfo.pwd);\nconsole.log(userInfo.userName);",
+      "answer_text": "Output: `12345678 undefined`\n\nConstructor returning object overrides `this` binding, returns only the object.",
+      "tags": ["javascript", "constructors", "return", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_094",
+      "question_title": "Constructor Property Access",
+      "question_text": "What would be the output of:\nvar employeeId = 'aq123';\nfunction Employee() {\n  this.employeeId = 'bq1uy';\n}\nconsole.log(Employee.employeeId);",
+      "answer_text": "Output: `undefined`\n\nFunction property `employeeId` not set on constructor function itself.",
+      "tags": ["javascript", "constructors", "properties"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_095",
+      "question_title": "Prototype Property Inheritance",
+      "question_text": "What would be the output of:\nvar employeeId = 'aq123';\nfunction Employee() {\n\tthis.employeeId = 'bq1uy';\n}\nconsole.log(new Employee().employeeId);\nEmployee.prototype.employeeId = 'kj182';\nEmployee.prototype.JobId = '1BJKSJ';\nconsole.log(new Employee().JobId);\nconsole.log(new Employee().employeeId);",
+      "answer_text": "Output: `bq1uy 1BJKSJ bq1uy`\n\nInstance property overrides prototype property. Prototype properties are inherited.",
+      "tags": ["javascript", "prototype", "inheritance", "constructors"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_096",
+      "question_title": "Catch Block Scope",
+      "question_text": "What would be the output of:\nvar employeeId = 'aq123';\n(function Employee() {\n\ttry {\n\t\tthrow 'foo123';\n\t} catch (employeeId) {\n\t\tconsole.log(employeeId);\n\t}\n\tconsole.log(employeeId);\n}());",
+      "answer_text": "Output: `foo123 aq123`\n\nCatch parameter `employeeId` shadows outer variable only inside catch block.",
+      "tags": ["javascript", "try-catch", "scope", "variables"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_097",
+      "question_title": "Array filter on String",
+      "question_text": "What would be the output of:\n(function() {\n\tvar greet = 'Hello World';\n\tvar toGreet = [].filter.call(greet, function(element, index) {\n\t\treturn index > 5;\n\t});\n\tconsole.log(toGreet);\n}());",
+      "answer_text": "Output: `['W', 'o', 'r', 'l', 'd']`\n\n`filter` called on string treats it as array-like, returns characters after index 5.",
+      "tags": ["javascript", "arrays", "filter", "strings"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_098",
+      "question_title": "Function bind Method",
+      "question_text": "What would be the output of:\n(function() {\n\tvar fooAccount = {\n\t\tname: 'John',\n\t\tamount: 4000,\n\t\tdeductAmount: function(amount) {\n\t\t\tthis.amount -= amount;\n\t\t\treturn 'Total amount left in account: ' + this.amount;\n\t\t}\n\t};\n\tvar barAccount = {\n\t\tname: 'John',\n\t\tamount: 6000\n\t};\n\tvar withdrawAmountBy = function(totalAmount) {\n\t\treturn fooAccount.deductAmount.bind(barAccount, totalAmount);\n\t};\n\tconsole.log(withdrawAmountBy(400)());\n\tconsole.log(withdrawAmountBy(300)());\n}());",
+      "answer_text": "Output: `Total amount left in account: 5600 Total amount left in account: 5300`\n\n`bind()` creates new function with `this` bound to `barAccount` and pre-set argument.",
+      "tags": ["javascript", "bind", "this", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_099",
+      "question_title": "Function apply Method",
+      "question_text": "What would be the output of:\n(function() {\n\tvar fooAccount = {\n\t\tname: 'John',\n\t\tamount: 4000,\n\t\tdeductAmount: function(amount) {\n\t\t\tthis.amount -= amount;\n\t\t\treturn this.amount;\n\t\t}\n\t};\n\tvar barAccount = {\n\t\tname: 'John',\n\t\tamount: 6000\n\t};\n\tvar withdrawAmountBy = function(totalAmount) {\n\t\treturn fooAccount.deductAmount.apply(barAccount, [totalAmount]);\n\t};\n\tconsole.log(withdrawAmountBy(400));\n\tconsole.log(withdrawAmountBy(300));\n\tconsole.log(withdrawAmountBy(200));\n}());",
+      "answer_text": "Output: `5600 5300 5100`\n\n`apply()` calls function with `this` as `barAccount` and array of arguments.",
+      "tags": ["javascript", "apply", "this", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_100",
+      "question_title": "Function call Method",
+      "question_text": "What would be the output of:\n(function() {\n\tvar fooAccount = {\n\t\tname: 'John',\n\t\tamount: 6000,\n\t\tdeductAmount: function(amount) {\n\t\t\tthis.amount -= amount;\n\t\t\treturn this.amount;\n\t\t}\n\t};\n\tvar barAccount = {\n\t\tname: 'John',\n\t\tamount: 4000\n\t};\n\tvar withdrawAmountBy = function(totalAmount) {\n\t\treturn fooAccount.deductAmount.call(barAccount, totalAmount);\n\t};\n\tconsole.log(withdrawAmountBy(400));\n\tconsole.log(withdrawAmountBy(300));\n\tconsole.log(withdrawAmountBy(200));\n}());",
+      "answer_text": "Output: `3600 3300 3100`\n\n`call()` calls function with `this` as `barAccount` and individual arguments.",
+      "tags": ["javascript", "call", "this", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_101",
+      "question_title": "Bind with IIFE",
+      "question_text": "What would be the output of:\n(function greetNewCustomer() {\n\tconsole.log('Hello ' + this.name);\n}.bind({\n\tname: 'John'\n})());",
+      "answer_text": "Output: `Hello John`\n\n`bind()` creates function with `this` bound to object, immediately invoked.",
+      "tags": ["javascript", "bind", "iife", "this"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_102",
+      "question_title": "Promise-like Then Method",
+      "question_text": "What would be the output of:\nfunction getDataFromServer(apiUrl){\n    var name = \"John\";\n\treturn {\n\t\tthen : function(fn){\n\t\t\tfn(name);\n\t\t}\n\t}\n}\ngetDataFromServer('www.google.com').then(function(name){\n\tconsole.log(name);\n});",
+      "answer_text": "Output: `John`\n\nObject with `then` method mimics Promise pattern, calls callback immediately.",
+      "tags": ["javascript", "promises", "then", "callbacks"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_103",
+      "question_title": "Array Sort Customization",
+      "question_text": "What would be the output of:\n(function(){\n\tvar arrayNumb = [2, 8, 15, 16, 23, 42];\n\tArray.prototype.sort = function(a,b){\n\t\treturn a - b;\n\t};\n\tarrayNumb.sort();\n\tconsole.log(arrayNumb);\n})();\n\n(function(){\n\tvar numberArray = [2, 8, 15, 16, 23, 42];\n\tnumberArray.sort(function(a,b){\n\t\tif(a == b){\n\t\t\treturn 0;\n\t\t}else{\n\t\t\treturn a < b ? -1 : 1;\n\t\t}\n\t});\n\tconsole.log(numberArray);\n})();\n\n(function(){\n\tvar numberArray = [2, 8, 15, 16, 23, 42];\n\tnumberArray.sort(function(a,b){\n\t\treturn a-b;\n\t});\n\tconsole.log(numberArray);\n})();",
+      "answer_text": "Output: `[2,8,15,16,23,42] [2,8,15,16,23,42] [2,8,15,16,23,42]`\n\nAll three custom sort functions sort numbers ascending.",
+      "tags": ["javascript", "arrays", "sort", "custom"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_104",
+      "question_title": "Automatic Semicolon Insertion",
+      "question_text": "What would be the output of:\n(function(){\n\tfunction sayHello(){\n\t\tvar name = \"Hi John\";\n\t\treturn \n\t\t{\n\t\t\tfullName: name\n\t\t}\n\t}\n\tconsole.log(sayHello().fullName);\n})();",
+      "answer_text": "Output: `Uncaught TypeError: Cannot read property 'fullName' of undefined`\n\nAutomatic semicolon insertion after `return` causes function to return `undefined`.",
+      "tags": ["javascript", "semicolon", "return", "errors"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_105",
+      "question_title": "Comma Operator",
+      "question_text": "What would be the output of:\nfunction getNumber(){\n\treturn (2,4,5);\n}\nvar numb = getNumber();\nconsole.log(numb);",
+      "answer_text": "Output: `5`\n\nComma operator returns last value in sequence.",
+      "tags": ["javascript", "comma-operator", "return"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_106",
+      "question_title": "Empty Return",
+      "question_text": "What would be the output of:\nfunction getNumber(){\n\treturn;\n}\nvar numb = getNumber();\nconsole.log(numb);",
+      "answer_text": "Output: `undefined`\n\nEmpty `return` returns `undefined`.",
+      "tags": ["javascript", "return", "undefined"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_107",
+      "question_title": "Currying with Array Return",
+      "question_text": "What would be the output of:\nfunction mul(x){\n\treturn function(y){\n\t\treturn [x*y, function(z){\n\t\t\treturn x*y + z;\n\t\t}];\n\t}\n}\nconsole.log(mul(2)(3)[0]);\nconsole.log(mul(2)(3)[1](4));",
+      "answer_text": "Output: `6, 10`\n\nCurried function returns array containing result and another function.",
+      "tags": ["javascript", "currying", "functions", "arrays"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_108",
+      "question_title": "Currying with Object Return",
+      "question_text": "What would be the output of:\nfunction mul(x) {\n\treturn function(y) {\n\t\treturn {\n\t\t\tresult: x * y,\n\t\t\tsum: function(z) {\n\t\t\t\treturn x * y + z;\n\t\t\t}\n\t\t};\n\t};\n}\nconsole.log(mul(2)(3).result);\nconsole.log(mul(2)(3).sum(4));",
+      "answer_text": "Output: `6, 10`\n\nCurried function returns object with result property and sum method.",
+      "tags": ["javascript", "currying", "functions", "objects"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_109",
+      "question_title": "Multiple Level Currying",
+      "question_text": "What would be the output of:\nfunction mul(x) {\n\treturn function(y) {\n\t\treturn function(z) {\n\t\t\treturn function(w) {\n\t\t\t\treturn function(p) {\n\t\t\t\t\treturn x * y * z * w * p;\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n}\nconsole.log(mul(2)(3)(4)(5)(6));",
+      "answer_text": "Output: `720`\n\n5-level curried multiplication: 2×3×4×5×6 = 720.",
+      "tags": ["javascript", "currying", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_110",
+      "question_title": "Arrow Function This",
+      "question_text": "What would be the output of:\nfunction getName1(){\n\tconsole.log(this.name);\n}\nObject.prototype.getName2 = () =>{\n\tconsole.log(this.name)\n}\nlet personObj = {\n\tname:\"Tony\",\n\tprint:getName1\n}\npersonObj.print();\npersonObj.getName2();",
+      "answer_text": "Output: `Tony undefined`\n\nRegular function `getName1` has `this` as calling object. Arrow function `getName2` has lexical `this` (global/window).",
+      "tags": ["javascript", "arrow-functions", "this", "prototype"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_111",
+      "question_title": "While Loop with setTimeout",
+      "question_text": "What would be the output of:\nlet a = true;\nlet c = 0;\nsetTimeout(() => {\n\ta = false;\n},2000)\nwhile(a){\n\tconsole.log('Hello')\n}",
+      "answer_text": "Infinite loop printing 'Hello'.\n\n`setTimeout` callback runs after loop starts, but JavaScript is single-threaded - while loop blocks execution.",
+      "tags": ["javascript", "loops", "settimeout", "blocking"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_112",
+      "question_title": "SetInterval with ClearTimeout",
+      "question_text": "What would be the output of:\nlet c=0;\nlet id = setInterval(() => {\n\tconsole.log(c++)\n},200)\nsetTimeout(() => {\n\tclearInterval(id)\n},2000)",
+      "answer_text": "Prints 0 to 9 sequentially (200ms intervals, stops after 2000ms).",
+      "tags": ["javascript", "setinterval", "settimeout", "clearinterval"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_113",
+      "question_title": "Array of Objects Slice",
+      "question_text": "What would be the output of:\nvar arrA = [{prop1: \"value\"}, {someProp: \"also value\"},3,4,5];\nvar arrB = arrA.slice();\narrB[0].prop1=42;\narrB[3] = 20;\nconsole.log(arrA);",
+      "answer_text": "Output: `[{prop1: 42}, {someProp: \"also value\"}, 3, 4, 5]`\n\n`slice()` creates shallow copy - objects are copied by reference, primitives by value.",
+      "tags": ["javascript", "arrays", "slice", "shallow-copy"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_114",
+      "question_title": "Default Parameter Values",
+      "question_text": "What are different ways to set default parameter values in JavaScript?",
+      "answer_text": "1. ES5: Check `typeof` or use `||` operator\n2. ES6: Default parameter syntax `function(param = defaultValue)`\n\nES6 is cleanest and most readable.",
+      "tags": ["javascript", "functions", "parameters", "default-values"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "adv_115",
+      "question_title": "Function Binding Concept",
+      "question_text": "What is Function binding in JavaScript?",
+      "answer_text": "Function binding refers to setting the `this` context for a function using `bind()`, `call()`, or `apply()`. Useful for borrowing methods, partial application, and ensuring correct context in callbacks.",
+      "tags": ["javascript", "bind", "call", "apply", "this"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_001",
+      "question_title": "Node.js Introduction",
+      "question_text": "What is node.js?",
+      "answer_text": "Node.js is a server-side JavaScript runtime environment used to build scalable network applications. It uses an event-driven, non-blocking I/O model which makes it efficient and lightweight.",
+      "tags": ["nodejs", "server-side", "javascript", "introduction"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_002",
+      "question_title": "Node.js Working Mechanism",
+      "question_text": "How node.js works?",
+      "answer_text": "Node.js runs on the V8 JavaScript engine (same as Chrome). It uses an event-driven, non-blocking I/O model with a single-threaded event loop. This architecture allows it to handle many concurrent connections efficiently.",
+      "tags": ["nodejs", "v8", "event-loop", "architecture"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_003",
+      "question_title": "I/O Definition",
+      "question_text": "What do you mean by the term I/O?",
+      "answer_text": "I/O stands for Input/Output. It refers to any communication between a program and external resources like files, databases, network sockets, or user input. I/O operations are typically slower than in-memory operations.",
+      "tags": ["nodejs", "io", "input-output", "terminology"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_004",
+      "question_title": "Event-Driven Programming",
+      "question_text": "What does event-driven programming mean?",
+      "answer_text": "Event-driven programming is a paradigm where program flow is determined by events like user actions, sensor outputs, or messages from other programs. It consists of event selection and event handling mechanisms, allowing asynchronous and non-blocking operations.",
+      "tags": ["nodejs", "event-driven", "programming", "paradigm"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_005",
+      "question_title": "Node.js Use Cases",
+      "question_text": "Where can we use node.js?",
+      "answer_text": "Node.js is used for:\n- Real-time web applications (chat, gaming)\n- API servers and backends\n- Microservices architecture\n- Command-line tools\n- Network applications\n- Data streaming applications\n- General purpose applications",
+      "tags": ["nodejs", "use-cases", "applications", "real-time"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_006",
+      "question_title": "Node.js Advantages",
+      "question_text": "What is the advantage of using node.js?",
+      "answer_text": "Key advantages:\n- Fast execution with V8 engine\n- Excellent for I/O bound applications\n- Asynchronous and non-blocking by default\n- Single programming language (JavaScript) for frontend and backend\n- Large ecosystem (npm)\n- Great for real-time applications\n- High scalability with event-driven architecture",
+      "tags": ["nodejs", "advantages", "benefits", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_007",
+      "question_title": "Node.js API Functions",
+      "question_text": "What are the two types of API functions in Node.js?",
+      "answer_text": "Node.js has two types of API functions:\n1. **Asynchronous, non-blocking functions**: These use callbacks/promises and don't block the event loop.\n2. **Synchronous, blocking functions**: These block execution until completion and typically have 'Sync' in their names (e.g., `readFileSync`).",
+      "tags": ["nodejs", "api", "asynchronous", "synchronous"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_008",
+      "question_title": "Control Flow Function",
+      "question_text": "What is control flow function?",
+      "answer_text": "A control flow function manages the execution order of multiple asynchronous operations. It ensures that async operations complete in a specific sequence or handle their results appropriately.",
+      "tags": ["nodejs", "control-flow", "async", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_009",
+      "question_title": "Control Flow Management",
+      "question_text": "Explain the steps how \"Control Flow\" controls the functions calls?",
+      "answer_text": "Control flow manages function calls by:\n1. Controlling execution order of async operations\n2. Collecting and processing data from multiple async calls\n3. Limiting concurrency to prevent resource exhaustion\n4. Determining the next step based on previous results",
+      "tags": ["nodejs", "control-flow", "async", "management"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_010",
+      "question_title": "Single Threaded Architecture",
+      "question_text": "Why Node.js is single threaded?",
+      "answer_text": "Node.js uses a single-threaded event loop model to handle async I/O operations efficiently. This design avoids the overhead of thread context switching and memory allocation, making it highly scalable for I/O-bound applications under typical web loads.",
+      "tags": ["nodejs", "single-threaded", "event-loop", "architecture"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_011",
+      "question_title": "Windows Compatibility",
+      "question_text": "Does node run on windows?",
+      "answer_text": "Yes, Node.js runs on Windows. You can download the Windows installer from the official Node.js website (nodejs.org). It's fully supported and regularly updated for Windows platforms.",
+      "tags": ["nodejs", "windows", "compatibility", "installation"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_012",
+      "question_title": "DOM Access in Node.js",
+      "question_text": "Can you access DOM in node?",
+      "answer_text": "No, Node.js cannot directly access the DOM because it runs on the server side, not in a browser. The DOM (Document Object Model) is a browser-specific API for HTML/XML document manipulation.",
+      "tags": ["nodejs", "dom", "browser", "server-side"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_013",
+      "question_title": "Asynchronous Tasks",
+      "question_text": "Using the event loop what are the tasks that should be done asynchronously?",
+      "answer_text": "Tasks that should be done asynchronously:\n- File I/O operations\n- Database queries\n- Network requests (HTTP, WebSocket)\n- Heavy computations (to avoid blocking)\n- Any operation that could potentially block the event loop",
+      "tags": ["nodejs", "event-loop", "asynchronous", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_014",
+      "question_title": "Node.js vs Java",
+      "question_text": "Why node.js is quickly gaining attention from JAVA programmers?",
+      "answer_text": "Node.js attracts Java programmers because:\n- Uses JavaScript for both frontend and backend\n- Lightweight and fast for I/O operations\n- Event-driven architecture is great for real-time apps\n- Simpler concurrency model than Java's multi-threading\n- Large ecosystem with npm\n- Quick prototyping and development",
+      "tags": ["nodejs", "java", "comparison", "adoption"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_015",
+      "question_title": "Async Queue Parameters",
+      "question_text": "What are the two arguments that async.queue takes?",
+      "answer_text": "The async.queue function takes two arguments:\n1. **Worker function**: The function that processes each task\n2. **Concurrency value**: Maximum number of tasks the worker can process simultaneously",
+      "tags": ["nodejs", "async", "queue", "concurrency"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_016",
+      "question_title": "Event Loop Explanation",
+      "question_text": "What is an event loop in Node.js?",
+      "answer_text": "The event loop is Node.js's mechanism for handling asynchronous operations. It continuously checks for and processes events in a queue, executing callbacks when operations complete. This allows Node.js to handle many concurrent connections efficiently with a single thread.",
+      "tags": ["nodejs", "event-loop", "async", "core-concept"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_017",
+      "question_title": "Async Implementation Steps",
+      "question_text": "Mention the steps by which you can async in Node.js?",
+      "answer_text": "Steps to implement async operations in Node.js:\n1. Use first-class functions (functions as arguments)\n2. Implement function composition\n3. Use callback patterns\n4. Employ counters for tracking async operations\n5. Leverage the event loop for non-blocking execution",
+      "tags": ["nodejs", "async", "implementation", "patterns"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_018",
+      "question_title": "Node.js Pros and Cons",
+      "question_text": "What are the pros and cons of Node.js?",
+      "answer_text": "**Pros:**\n- Fast for I/O-bound applications\n- JavaScript on both client and server\n- Great for real-time applications\n- Large package ecosystem (npm)\n- Non-blocking I/O improves scalability\n\n**Cons:**\n- Not ideal for CPU-intensive tasks\n- Callback hell without proper patterns\n- Relational databases less favorable\n- Single-threaded limitations for heavy computation",
+      "tags": ["nodejs", "pros-cons", "advantages", "limitations"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_019",
+      "question_title": "Non-Blocking I/O Solution",
+      "question_text": "How Node.js overcomes the problem of blocking of I/O operations?",
+      "answer_text": "Node.js overcomes blocking I/O through:\n- Event-driven architecture\n- Non-blocking I/O operations\n- Single-threaded event loop\n- Async callbacks for I/O completion\n- Use of system-level async I/O (libuv library)",
+      "tags": ["nodejs", "non-blocking", "io", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_020",
+      "question_title": "Node.js vs Ajax",
+      "question_text": "What is the difference between Node.js vs Ajax?",
+      "answer_text": "**Ajax:** Client-side technology for updating web pages without refresh, runs in browser.\n\n**Node.js:** Server-side JavaScript runtime, runs on server.\n\nKey difference: Ajax is for client-side async requests, while Node.js is a complete server platform.",
+      "tags": ["nodejs", "ajax", "comparison", "client-vs-server"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_021",
+      "question_title": "Node.js Challenges",
+      "question_text": "What are the Challenges with Node.js?",
+      "answer_text": "Main challenges:\n- Single-threaded limitation for CPU-intensive tasks\n- Callback hell without proper async patterns\n- Error handling in async code\n- Scaling across multiple CPU cores\n- Memory leaks in long-running applications\n- Learning curve for async programming",
+      "tags": ["nodejs", "challenges", "limitations", "issues"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_022",
+      "question_title": "Non-Blocking Meaning",
+      "question_text": "What does it mean \"non-blocking\" in node.js?",
+      "answer_text": "\"Non-blocking\" means Node.js doesn't wait for I/O operations to complete before moving to the next task. Instead, it registers callbacks and continues execution. When I/O completes, the callback is queued in the event loop for execution.",
+      "tags": ["nodejs", "non-blocking", "io", "async"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_023",
+      "question_title": "Importing Libraries",
+      "question_text": "What is the command that is used in node.js to import external libraries?",
+      "answer_text": "Use the `require()` function to import external libraries/modules.\n\nExample:\n```javascript\nconst http = require('http');\nconst fs = require('fs');\nconst express = require('express');\n```",
+      "tags": ["nodejs", "require", "modules", "import"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_024",
+      "question_title": "Popular Node.js Framework",
+      "question_text": "Mention the framework most commonly used in node.js?",
+      "answer_text": "Express.js is the most commonly used web framework in Node.js. It's minimal, flexible, and provides a robust set of features for web and mobile applications.",
+      "tags": ["nodejs", "express", "framework", "web"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_025",
+      "question_title": "Callback Function",
+      "question_text": "What is 'Callback' in node.js?",
+      "answer_text": "A callback is a function passed as an argument to another function, to be executed after its parent function completes. In Node.js, callbacks are fundamental for handling async operations, allowing the server to continue processing other requests while waiting for I/O operations to complete.",
+      "tags": ["nodejs", "callbacks", "async", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_001",
+      "question_title": "Node.js Detailed Definition",
+      "question_text": "What is Node.js?",
+      "answer_text": "Node.js is a JavaScript runtime environment built on Chrome's V8 JavaScript engine. It allows JavaScript code to run on servers, not just in browsers. Node.js uses an event-driven, non-blocking I/O model with a single-threaded event loop, making it efficient for handling concurrent requests without creating new threads for each task. It's cross-platform, open-source, and ideal for building fast, scalable network applications, especially for I/O-heavy operations.",
+      "tags": ["nodejs", "javascript", "runtime", "v8", "server-side"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_002",
+      "question_title": "Node.js Key Features",
+      "question_text": "What are the key features of Node.js?",
+      "answer_text": "Key features of Node.js include:\n- Event-driven, non-blocking I/O model\n- Single-threaded event loop architecture\n- Built on Chrome V8 JavaScript engine\n- NPM (Node Package Manager) ecosystem\n- Cross-platform compatibility\n- Fast execution and high performance\n- Excellent for real-time applications\n- Asynchronous programming model\n- Support for streaming data\n- Large community and library support",
+      "tags": ["nodejs", "features", "architecture", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_003",
+      "question_title": "When to Use Node.js",
+      "question_text": "Explain how we decide, when to use Node.js and when not to use it.",
+      "answer_text": "**Use Node.js when:**\n- Building real-time applications (chat, gaming)\n- Developing APIs and microservices\n- Creating data streaming applications\n- Handling high concurrent connections\n- Building I/O-intensive applications\n- Developing collaborative tools\n- Creating proxy servers\n- Building single-page applications (SPA)\n\n**Avoid Node.js when:**\n- CPU-intensive computations are required\n- Heavy server-side processing needed\n- Complex mathematical calculations\n- Synchronous processing is essential\n- Applications requiring thread pooling\n\nNode.js excels at I/O-bound tasks but struggles with CPU-bound operations.",
+      "tags": ["nodejs", "use-cases", "decision", "architecture"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_004",
+      "question_title": "Node.js Development IDEs",
+      "question_text": "What IDEs can you use for Node.js development?",
+      "answer_text": "Popular IDEs for Node.js development:\n1. **Visual Studio Code** - Free, lightweight, excellent Node.js support\n2. **WebStorm** - JetBrains IDE with advanced Node.js features\n3. **IntelliJ IDEA** - Robust IDE with Node.js plugin\n4. **Sublime Text** - Fast, customizable text editor\n5. **Atom** - GitHub's hackable text editor\n6. **Eclipse with Node.js plugin** - Traditional IDE option\n7. **Cloud9** - Cloud-based development environment\n8. **Komodo IDE** - Cross-platform IDE supporting Node.js\n\nVS Code is currently the most popular choice for Node.js development due to its extensive extensions and built-in terminal.",
+      "tags": ["nodejs", "ides", "development", "tools"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_005",
+      "question_title": "Node.js Working Mechanism",
+      "question_text": "Explain how Node.js works.",
+      "answer_text": "Node.js works on an event-driven, non-blocking I/O model:\n1. **Single Thread**: Creates one main thread on invocation\n2. **Event Loop**: Continuously checks for events in a queue\n3. **Callback Mechanism**: Uses callbacks for async operations\n4. **Non-blocking I/O**: Doesn't wait for I/O operations to complete\n5. **Background Workers**: Offloads heavy tasks to libuv thread pool\n\nWhen a request arrives, Node.js processes it and attaches callbacks for I/O operations. It then handles other requests while waiting for I/O to complete. Once I/O finishes, the callback is executed. This allows handling thousands of concurrent connections efficiently.",
+      "tags": ["nodejs", "event-loop", "architecture", "async"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_006",
+      "question_title": "REPL in Node.js",
+      "question_text": "Explain REPL in Node.js.",
+      "answer_text": "REPL stands for Read-Eval-Print Loop. It's an interactive programming environment that:\n1. **Reads** user input\n2. **Evaluates** JavaScript code\n3. **Prints** the result\n4. **Loops** back to read mode\n\nREPL provides a command-line interface for testing Node.js code snippets without creating files. It's useful for:\n- Quick code testing\n- Learning JavaScript/Node.js\n- Debugging small code segments\n- Experimenting with APIs\n\nStart REPL by typing `node` in terminal. Exit with `.exit` or Ctrl+C twice.",
+      "tags": ["nodejs", "repl", "interactive", "development"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_007",
+      "question_title": "Single Thread Architecture",
+      "question_text": "Is Node.js entirely based on a single thread?",
+      "answer_text": "While Node.js uses a single main thread for event loop execution, it's not entirely single-threaded:\n\n**Single Thread:**\n- Main event loop runs on single thread\n- Handles incoming requests and callbacks\n- Manages the event queue\n\n**Multi-threaded Components:**\n- **libuv Thread Pool**: Handles file I/O, DNS, crypto operations\n- **Worker Threads**: For CPU-intensive tasks (Node.js 10.5+)\n- **Child Processes**: For parallel execution\n\nSo Node.js uses a single-threaded event loop for orchestration but leverages multiple threads for I/O and heavy computations via libuv and worker threads.",
+      "tags": ["nodejs", "threads", "architecture", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_010",
+      "question_title": "Callback Functions",
+      "question_text": "What is Callback in Node.js?",
+      "answer_text": "A callback is a function passed as an argument to another function, to be executed after its parent function completes. In Node.js, callbacks are essential for handling asynchronous operations.\n\n**Example:**\n```javascript\nconst fs = require('fs');\n\n// Synchronous (blocking)\nconst data = fs.readFileSync('file.txt', 'utf8');\nconsole.log(data);\n\n// Asynchronous with callback (non-blocking)\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) {\n    console.error('Error reading file:', err);\n    return;\n  }\n  console.log(data);\n});\n\nconsole.log('This runs immediately, before file is read');\n```\n\nCallbacks enable Node.js to handle I/O operations without blocking the event loop, making it highly scalable for handling concurrent requests.",
+      "tags": ["nodejs", "callbacks", "async", "functions"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_011",
+      "question_title": "Callback Hell Problem",
+      "question_text": "What is Callback Hell?",
+      "answer_text": "Callback Hell (or Pyramid of Doom) occurs when callbacks are nested inside other callbacks multiple levels deep, making code difficult to read and maintain.\n\n**Example of Callback Hell:**\n```javascript\ngetData(function(a) {\n  getMoreData(a, function(b) {\n    getMoreData(b, function(c) {\n      getMoreData(c, function(d) {\n        getMoreData(d, function(e) {\n          // Final callback\n        });\n      });\n    });\n  });\n});\n```\n\n**Problems with Callback Hell:**\n1. Difficult to read and understand\n2. Hard to maintain and debug\n3. Error handling becomes complex\n4. Code becomes tightly coupled\n5. Difficult to add new functionality",
+      "tags": ["nodejs", "callbacks", "callback-hell", "async"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_012",
+      "question_title": "Avoid Callback Hell",
+      "question_text": "How to avoid callback hell in Node.js?",
+      "answer_text": "Several solutions to avoid callback hell:\n\n1. **Promises:**\n```javascript\ngetData()\n  .then(a => getMoreData(a))\n  .then(b => getMoreData(b))\n  .then(c => getMoreData(c))\n  .then(d => getMoreData(d))\n  .catch(error => console.error(error));\n```\n\n2. **Async/Await:**\n```javascript\nasync function processData() {\n  try {\n    const a = await getData();\n    const b = await getMoreData(a);\n    const c = await getMoreData(b);\n    const d = await getMoreData(c);\n    return d;\n  } catch (error) {\n    console.error(error);\n  }\n}\n```\n\n3. **Modularization:** Break code into smaller functions\n4. **Named Functions:** Use named functions instead of anonymous\n5. **Control Flow Libraries:** Use async.js or similar libraries\n6. **Error Handling Early:** Handle errors at each step",
+      "tags": ["nodejs", "callback-hell", "promises", "async-await", "best-practices"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_014",
+      "question_title": "Node.js vs AJAX vs jQuery",
+      "question_text": "What is the difference between Nodejs, AJAX, and jQuery?",
+      "answer_text": "**Node.js:**\n- Server-side JavaScript runtime\n- Builds server applications and APIs\n- Handles backend logic and database operations\n- Runs on server (not in browser)\n\n**AJAX (Asynchronous JavaScript and XML):**\n- Client-side technique\n- Updates web pages asynchronously\n- Makes HTTP requests from browser\n- Doesn't require page refresh\n- Part of browser's JavaScript API\n\n**jQuery:**\n- JavaScript library for DOM manipulation\n- Simplifies AJAX calls and event handling\n- Runs in browser only\n- Cross-browser compatibility layer\n\n**Key Difference:** Node.js runs on server, AJAX/jQuery run in browser. Node.js can serve AJAX requests, and jQuery can make AJAX calls to Node.js servers.",
+      "tags": ["nodejs", "ajax", "jquery", "comparison", "client-server"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_015",
+      "question_title": "Globals in Node.js",
+      "question_text": "What are Globals in Node.js?",
+      "answer_text": "Node.js has several global objects available throughout the application:\n\n1. **`global`**: Global namespace object (similar to `window` in browsers)\n2. **`process`**: Provides information about current Node.js process\n3. **`console`**: For printing to stdout and stderr\n4. **`Buffer`**: For handling binary data\n5. **`setTimeout()`/`setInterval()`**: Timers\n6. **`__filename`**: Current module's filename\n7. **`__dirname`**: Current module's directory name\n8. **`module`**: Current module information\n9. **`exports`**: Module exports\n10. **`require()`**: Import modules\n\n**Note:** Variables declared without `var`, `let`, or `const` become global properties. Use module.exports for sharing across modules instead of polluting global scope.",
+      "tags": ["nodejs", "globals", "process", "modules", "scope"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_017",
+      "question_title": "EventEmitter Class",
+      "question_text": "What is EventEmitter in Node.js?",
+      "answer_text": "EventEmitter is a class in Node.js for handling events. Many built-in modules inherit from EventEmitter.\n\n**Using EventEmitter:**\n```javascript\nconst EventEmitter = require('events');\n\n// Create custom event emitter\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\n// Register event listener\nmyEmitter.on('event', () => {\n  console.log('Event occurred!');\n});\n\n// Emit event\nmyEmitter.emit('event');\n\n// With data\nmyEmitter.on('data', (data) => {\n  console.log('Received:', data);\n});\nmyEmitter.emit('data', { message: 'Hello' });\n\n// Common methods:\n// - on(): Add listener\n// - once(): Add one-time listener\n// - emit(): Trigger event\n// - removeListener(): Remove specific listener\n// - removeAllListeners(): Remove all listeners\n```\n\nEventEmitter enables the observer pattern in Node.js, allowing objects to subscribe to and emit events.",
+      "tags": ["nodejs", "events", "eventemitter", "observer-pattern"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_018",
+      "question_title": "Streams in Node.js",
+      "question_text": "How many types of Streams are present in Node.js?",
+      "answer_text": "Node.js has four types of streams:\n\n1. **Readable Streams**: For reading data\n   - Examples: `fs.createReadStream()`, HTTP requests\n   - Methods: `read()`, `pipe()`, `on('data')`\n\n2. **Writable Streams**: For writing data\n   - Examples: `fs.createWriteStream()`, HTTP responses\n   - Methods: `write()`, `end()`, `on('drain')`\n\n3. **Duplex Streams**: Both readable and writable\n   - Examples: TCP sockets, `zlib.createGzip()`\n\n4. **Transform Streams**: Duplex streams that transform data\n   - Examples: `zlib.createGzip()`, crypto streams\n   - Data is modified between reading and writing\n\n**Stream Events:** `data`, `end`, `error`, `finish`, `close`\n\nStreams handle data in chunks, making them memory-efficient for large files or real-time data.",
+      "tags": ["nodejs", "streams", "io", "performance", "memory"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_019",
+      "question_title": "REPL Commands",
+      "question_text": "List and Explain the important REPL commands.",
+      "answer_text": "Important Node.js REPL commands:\n\n1. **`.help`** - Show all commands\n2. **`.break`** - Exit current expression\n3. **`.clear`** - Clear REPL context\n4. **`.exit`** / **`.exit`** - Exit REPL\n5. **`.save filename`** - Save session to file\n6. **`.load filename`** - Load file into session\n7. **`.editor`** - Enter editor mode\n8. **`Ctrl+C`** - Terminate current command\n9. **`Ctrl+C` (twice)** - Exit REPL\n10. **`Ctrl+D`** - Exit REPL\n11. **`Tab`** - Auto-completion\n12. **`_`** - Last result\n13. **`.history`** - Show command history\n\n**Usage Examples:**\n```javascript\n> .help\n> .save session.js\n> .load session.js\n> 5 + 5  // 10\n> _ + 5  // 15 (uses last result)\n```\n\nREPL is great for quick tests and learning JavaScript/Node.js concepts.",
+      "tags": ["nodejs", "repl", "commands", "interactive"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_020",
+      "question_title": "NPM Package Manager",
+      "question_text": "What is NPM in Node.js?",
+      "answer_text": "NPM (Node Package Manager) is the default package manager for Node.js with two main functions:\n\n1. **Package Repository**: Largest software registry in the world\n2. **Command Line Tool**: Install, manage, and publish packages\n\n**Common NPM Commands:**\n```bash\n# Check version\nnpm --version\n\n# Initialize new project\nnpm init\nnpm init -y  # Skip questions\n\n# Install package\nnpm install package-name\nnpm i package-name  # Short form\n\n# Install globally\nnpm install -g package-name\n\n# Install as dev dependency\nnpm install --save-dev package-name\n\n# Update package\nnpm update package-name\n\n# Uninstall package\nnpm uninstall package-name\n\n# List installed packages\nnpm list\nnpm list -g  # Global packages\n\n# Run scripts from package.json\nnpm run script-name\n```\n\nNPM manages dependencies in `package.json` and `node_modules` directory.",
+      "tags": ["nodejs", "npm", "package-manager", "dependencies"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_021",
+      "question_title": "Global Dependencies",
+      "question_text": "What is the global installation of dependencies?",
+      "answer_text": "Global installation places packages in system directory for CLI tools:\n\n**Location:**\n- Unix/Mac: `/usr/local/lib/node_modules` or `~/.npm-global`\n- Windows: `%AppData%\\npm\\node_modules`\n\n**Install Globally:**\n```bash\nnpm install -g package-name\n# Example: npm install -g nodemon\n```\n\n**Characteristics:**\n- Available system-wide in terminal\n- Cannot be imported with `require()`\n- Used for command-line tools\n- Requires admin/sudo on some systems\n\n**Common Global Packages:**\n- `nodemon` - Auto-restart Node.js apps\n- `express-generator` - Express app generator\n- `typescript` - TypeScript compiler\n- `webpack` - Module bundler\n- `create-react-app` - React app generator",
+      "tags": ["nodejs", "npm", "global", "dependencies", "cli"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_022",
+      "question_title": "Local Dependencies",
+      "question_text": "What is the local installation of dependencies?",
+      "answer_text": "Local installation places packages in project's `node_modules` folder:\n\n**Location:** `./node_modules/` (project root)\n\n**Install Locally:**\n```bash\nnpm install package-name\n# Or\nnpm install --save package-name\n```\n\n**Characteristics:**\n- Available only within the project\n- Can be imported with `require()` or `import`\n- Listed in `package.json` dependencies\n- Default installation mode\n- Project-specific versions\n\n**Package.json Entries:**\n```json\n{\n  \"dependencies\": {\n    \"express\": \"^4.18.2\"\n  },\n  \"devDependencies\": {\n    \"jest\": \"^29.5.0\"\n  }\n}\n```\n\nLocal dependencies ensure project isolation and version consistency.",
+      "tags": ["nodejs", "npm", "local", "dependencies", "package-json"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_023",
+      "question_title": "Package.json File",
+      "question_text": "What is package.json? Who uses it?",
+      "answer_text": "`package.json` is the manifest file for Node.js projects containing:\n\n**Key Sections:**\n1. **Metadata**: Name, version, description, author\n2. **Dependencies**: Production packages\n3. **Dev Dependencies**: Development-only packages\n4. **Scripts**: Custom npm commands\n5. **Engines**: Node.js/npm version requirements\n6. **Repository**: Source code location\n7. **License**: Project license\n\n**Example:**\n```json\n{\n  \"name\": \"my-app\",\n  \"version\": \"1.0.0\",\n  \"description\": \"My Node.js app\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"dev\": \"nodemon index.js\",\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.2\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^2.0.22\"\n  }\n}\n```\n\n**Used by:**\n- NPM (to install dependencies)\n- Developers (to understand project structure)\n- CI/CD tools (for builds and tests)\n- Deployment platforms (Heroku, Vercel, etc.)",
+      "tags": ["nodejs", "package-json", "npm", "dependencies", "manifest"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_024",
+      "question_title": "Multi-core Support",
+      "question_text": "Does Node.js support multi-core platforms? And is it capable of utilizing all the cores?",
+      "answer_text": "Yes, Node.js runs on multi-core systems but doesn't automatically utilize all cores due to its single-threaded event loop.\n\n**Solutions for Multi-core Utilization:**\n\n1. **Cluster Module:**\n```javascript\nconst cluster = require('cluster');\nconst os = require('os');\n\nif (cluster.isMaster) {\n  const numCPUs = os.cpus().length;\n  \n  // Fork workers\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n  \n  cluster.on('exit', (worker) => {\n    console.log(`Worker ${worker.process.pid} died`);\n    cluster.fork();\n  });\n} else {\n  // Worker process\n  require('./app.js');\n}\n```\n\n2. **Worker Threads (Node.js 10.5+):** For CPU-intensive tasks\n3. **PM2 Process Manager:** Auto-clustering feature\n4. **Child Processes:** Spawn separate processes\n\n**Limitations:**\n- Shared state requires IPC communication\n- Memory not shared between workers\n- More complex than single-threaded apps\n\nNode.js can utilize multiple cores but requires explicit configuration.",
+      "tags": ["nodejs", "multi-core", "cluster", "performance", "scaling"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_025",
+      "question_title": "Callback Error Convention",
+      "question_text": "Which is the first argument usually passed to a Node.js callback handler?",
+      "answer_text": "The first argument in Node.js callbacks is conventionally an error object (or null/undefined if no error). This is known as \"Error-First Callback\" pattern.\n\n**Standard Pattern:**\n```javascript\nfunction asyncOperation(callback) {\n  // Some async work\n  const error = null; // or new Error('Something went wrong')\n  const result = 'Success';\n  \n  // Call callback with error first\n  callback(error, result);\n}\n\n// Usage\nasyncOperation((err, data) => {\n  if (err) {\n    // Handle error\n    console.error('Error:', err.message);\n    return;\n  }\n  // Process data\n  console.log('Result:', data);\n});\n```\n\n**Why Error-First?**\n1. Consistent API across Node.js core\n2. Forces error handling consideration\n3. Makes async code more predictable\n4. Standard across Node.js ecosystem\n\n**Built-in Examples:**\n```javascript\nfs.readFile('file.txt', 'utf8', (err, data) => { /* ... */ });\ndb.query('SELECT * FROM users', (err, results) => { /* ... */ });\nhttp.get(url, (err, response) => { /* ... */ });\n```",
+      "tags": ["nodejs", "callbacks", "error-handling", "conventions", "patterns"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_026",
+      "question_title": "Stream Chaining",
+      "question_text": "What is a chaining process in Node.js?",
+      "answer_text": "Stream chaining connects multiple streams together, passing output of one stream as input to another.\n\n**Example with File Compression:**\n```javascript\nconst fs = require('fs');\nconst zlib = require('zlib');\n\n// Chain: Read → Compress → Write\nfs.createReadStream('input.txt')\n  .pipe(zlib.createGzip())      // Compress stream\n  .pipe(fs.createWriteStream('input.txt.gz'))\n  .on('finish', () => {\n    console.log('File compressed successfully');\n  });\n```\n\n**Example with HTTP Response:**\n```javascript\nconst http = require('http');\nconst fs = require('fs');\n\nhttp.createServer((req, res) => {\n  // Chain: Read file → HTTP response\n  fs.createReadStream('large-file.pdf')\n    .pipe(res);  // Stream directly to response\n}).listen(3000);\n```\n\n**Benefits of Chaining:**\n1. **Memory Efficiency**: Processes data in chunks\n2. **Backpressure Handling**: Automatic flow control\n3. **Code Readability**: Clean, linear pipeline\n4. **Performance**: No intermediate storage\n\nChaining is fundamental to Node.js's non-blocking I/O model.",
+      "tags": ["nodejs", "streams", "chaining", "pipes", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_028",
+      "question_title": "Child Process Module",
+      "question_text": "What is a child_process module in Node.js?",
+      "answer_text": "The `child_process` module enables creating child processes for parallel processing:\n\n**Three Main Methods:**\n\n1. **`spawn()`**: Launch new process, stream I/O\n```javascript\nconst { spawn } = require('child_process');\nconst ls = spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', (data) => {\n  console.log(`stdout: ${data}`);\n});\n```\n\n2. **`exec()`**: Run shell command, buffer output\n```javascript\nconst { exec } = require('child_process');\nexec('ls -lh /usr', (error, stdout, stderr) => {\n  if (error) {\n    console.error(`Error: ${error}`);\n    return;\n  }\n  console.log(`Output: ${stdout}`);\n});\n```\n\n3. **`fork()`**: Special case of spawn() for Node.js processes\n```javascript\nconst { fork } = require('child_process');\nconst child = fork('child.js');\n\nchild.on('message', (msg) => {\n  console.log('Message from child:', msg);\n});\n\nchild.send({ hello: 'world' });\n```\n\n**Use Cases:**\n- CPU-intensive tasks\n- Running shell commands\n- Parallel processing\n- Separate memory spaces\n- Isolating failures",
+      "tags": ["nodejs", "child-process", "parallel", "processes", "performance"],
+      "rank_value": 5
+    },
+    {
+      "question_id": "node_adv_030",
+      "question_title": "Control Flow Function",
+      "question_text": "What is a control flow function? What are the steps it executes?",
+      "answer_text": "A control flow function manages execution order of asynchronous operations in Node.js.\n\n**Steps Executed:**\n1. **Control Execution Order**: Manage sequence of async operations\n2. **Collect Data**: Aggregate results from multiple async calls\n3. **Limit Concurrency**: Control number of parallel operations\n4. **Call Next Step**: Determine and execute subsequent operations\n\n**Example with `async.waterfall`:**\n```javascript\nconst async = require('async');\n\nasync.waterfall([\n  function(callback) {\n    callback(null, 'first', 'second');\n  },\n  function(arg1, arg2, callback) {\n    // arg1 = 'first', arg2 = 'second'\n    callback(null, 'third');\n  },\n  function(arg1, callback) {\n    // arg1 = 'third'\n    callback(null, 'done');\n  }\n], function(err, result) {\n  // result = 'done'\n});\n```\n\n**Common Control Flow Patterns:**\n- Sequential execution (waterfall)\n- Parallel execution (parallel, map)\n- Race conditions (race)\n- Retry logic (retry)\n- Queue management (queue)\n\nControl flow functions prevent callback hell and manage complex async logic.",
+      "tags": ["nodejs", "control-flow", "async", "patterns", "management"],
+      "rank_value": 5
+    }
+  ]
