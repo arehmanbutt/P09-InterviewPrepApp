@@ -49,7 +49,7 @@ Done by: Abdul Samad - 26100314, Abdul Rehman - 26100049
 
 HOW TO ACCESS THE SYSTEM
 
-https://ai-interviewprepapp.netlify.app/
+[https://ai-interviewprepapp.netlify.app/](https://ai-interviewprepapp.netlify.app/)
 
 
 

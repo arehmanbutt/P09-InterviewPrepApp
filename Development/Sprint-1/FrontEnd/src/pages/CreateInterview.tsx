@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
-import { Navigate } from "react-router-dom";
 
 export default function CreateInterview(): JSX.Element {
   const navigate = useNavigate();
@@ -10,7 +9,6 @@ export default function CreateInterview(): JSX.Element {
   const [jobTitle, setJobTitle] = useState<string>("");
   const [company, setCompany] = useState<string>("");
   const [jobDescription, setJobDescription] = useState<string>("");
-
   const [saving, setSaving] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,62 +26,67 @@ export default function CreateInterview(): JSX.Element {
     }
 
     setSaving(true);
-
     try {
-      // Get a session token from Clerk (if available) to call protected endpoints
       let token: string | null = null;
       if (getToken) {
         try {
           token = await getToken({ template: "interview-backend" });
-          console.log("Token received:", token ? "Yes" : "No");
         } catch (err) {
           console.warn("getToken failed:", err);
           token = null;
         }
       }
 
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-      }
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/interviews/save-parameters`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ jobTitle, company, jobDescription }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/interviews/save-parameters`,
+        {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ jobTitle, company, jobDescription }),
+        }
+      );
 
-      // Read response body even on non-ok so we can show helpful message
-      const text = await res.text();
+      // Parse response safely
       let body: any = null;
+      const text = await res.text();
       try {
         body = text ? JSON.parse(text) : null;
-      } catch (err) {
+      } catch {
         body = { message: text };
       }
 
       if (!res.ok) {
-        // Prefer structured message, fallback to status
-        const msg = body?.message || body?.error || `Server error: ${res.status}`;
+        const msg =
+          body?.message || body?.error || `Server error: ${res.status}`;
         setError(String(msg));
         console.error("Failed to create interview:", res.status, body);
         return;
       }
 
-      // success
       const interviewId = body?.interviewId ?? null;
-      console.log("Received interview ID:", interviewId);
-
       if (interviewId) {
         navigate("/interview-summary", {
-          state: { id: interviewId, jobTitle, company, description: jobDescription },
+          state: {
+            id: interviewId,
+            jobTitle,
+            company,
+            description: jobDescription,
+          },
         });
       } else {
         setError("Error in creating interview");
       }
     } catch (err: any) {
       console.error("Error submitting interview:", err);
-      setError(err?.message || "An unexpected error occurred while creating the interview.");
+      setError(
+        err?.message ||
+          "An unexpected error occurred while creating the interview."
+      );
     } finally {
       setSaving(false);
     }
@@ -95,10 +98,17 @@ export default function CreateInterview(): JSX.Element {
         <h1 className="text-2xl font-semibold text-white">Create Interview</h1>
 
         <form className="mt-6 grid grid-cols-1 gap-5" onSubmit={handleSubmit}>
-          {error && <div className="rounded-md bg-red-800/60 p-3 text-red-100">{error}</div>}
+          {error && (
+            <div className="rounded-md bg-red-800/60 p-3 text-red-100">
+              {error}
+            </div>
+          )}
 
           <div>
-            <label htmlFor="jobTitle" className="mb-1 block text-sm text-gray-300">
+            <label
+              htmlFor="jobTitle"
+              className="mb-1 block text-sm text-gray-300"
+            >
               Job Title
             </label>
             <input
@@ -107,13 +117,16 @@ export default function CreateInterview(): JSX.Element {
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               required
-              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
               placeholder="Frontend Engineer"
+              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
             />
           </div>
 
           <div>
-            <label htmlFor="company" className="mb-1 block text-sm text-gray-300">
+            <label
+              htmlFor="company"
+              className="mb-1 block text-sm text-gray-300"
+            >
               Company
             </label>
             <input
@@ -122,13 +135,16 @@ export default function CreateInterview(): JSX.Element {
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               required
-              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
               placeholder="Acme Inc"
+              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
             />
           </div>
 
           <div>
-            <label htmlFor="jobDescription" className="mb-1 block text-sm text-gray-300">
+            <label
+              htmlFor="jobDescription"
+              className="mb-1 block text-sm text-gray-300"
+            >
               Job Description
             </label>
             <textarea
@@ -137,9 +153,9 @@ export default function CreateInterview(): JSX.Element {
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               required
-              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
               placeholder="Provide a detailed job description here..."
               rows={6}
+              className="w-full rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-2 text-white placeholder-gray-500 outline-none ring-emerald-500/20 focus:ring-2"
             />
           </div>
 
@@ -151,7 +167,6 @@ export default function CreateInterview(): JSX.Element {
             >
               Cancel
             </button>
-
             <button
               type="submit"
               disabled={saving}

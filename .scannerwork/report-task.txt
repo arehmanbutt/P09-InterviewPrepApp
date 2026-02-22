@@ -1,0 +1,6 @@
+projectKey=P09-InterviewPrepApp
+serverUrl=http://localhost:9000
+serverVersion=25.11.0.114957
+dashboardUrl=http://localhost:9000/dashboard?id=P09-InterviewPrepApp
+ceTaskId=6ec27900-61c2-4159-897e-3445cd2d49ec
+ceTaskUrl=http://localhost:9000/api/ce/task?id=6ec27900-61c2-4159-897e-3445cd2d49ec

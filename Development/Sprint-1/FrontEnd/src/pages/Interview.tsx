@@ -1,66 +1,75 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getInterview, updateInterview } from '../lib/storage'
-import { useAuth, SignedIn, SignedOut } from '@clerk/clerk-react'
-import { Navigate } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { getInterview, updateInterview } from "../lib/storage";
+import { useAuth } from "@clerk/clerk-react";
 
+// Safe random number generator for UI
+function safeRandom(min: number, max: number) {
+  const array = new Uint32Array(1);
+  crypto.getRandomValues(array);
+  const rand01 = array[0] / 0xffffffff;
+  return min + rand01 * (max - min);
+}
 
 function useTimer(active: boolean) {
-  const [seconds, setSeconds] = useState(0)
+  const [seconds, setSeconds] = useState(0);
   useEffect(() => {
-    if (!active) return
-    const id = setInterval(() => setSeconds((s) => s + 1), 1000)
-    return () => clearInterval(id)
-  }, [active])
-  return seconds
+    if (!active) return;
+    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => clearInterval(id);
+  }, [active]);
+  return seconds;
 }
 
 export default function Interview() {
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const data = useMemo(() => (id ? getInterview(id) : null), [id])
-  const [paused, setPaused] = useState(false)
-  const [muted, setMuted] = useState(false)
-  const [ended, setEnded] = useState(false)
+  const { id } = useParams();
+  const { isLoaded, isSignedIn } = useAuth();
 
-  const { isLoaded, isSignedIn, userId, getToken } = useAuth()
+  const data = useMemo(() => (id ? getInterview(id) : null), [id]);
+  const [paused, setPaused] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [ended, setEnded] = useState(false);
+  const seconds = useTimer(!paused && !ended);
+  const minutes = Math.floor(seconds / 60);
+  const remaining = seconds % 60;
+  const waveformRef = useRef<HTMLDivElement>(null);
 
-  if (!isLoaded) return <div /> // or spinner
-  if (!isSignedIn) return <Navigate to="/login" replace />
-
-  const seconds = useTimer(!paused && !ended)
-
-  const minutes = Math.floor(seconds / 60)
-  const remaining = seconds % 60
-
+  // Update interview status
   useEffect(() => {
-    if (!id) return
-    updateInterview(id, { status: ended ? 'completed' : 'in-progress' })
-  }, [id, ended])
+    if (!id) return;
+    updateInterview(id, { status: ended ? "completed" : "in-progress" });
+  }, [id, ended]);
 
-  const waveformRef = useRef<HTMLDivElement>(null)
+  // Animate waveform safely
   useEffect(() => {
-    const el = waveformRef.current
-    if (!el) return
+    const el = waveformRef.current;
+    if (!el) return;
+
     const timer = setInterval(() => {
-      el.style.setProperty('--h', `${Math.random() * 24 + 8}px`)
-    }, 250)
-    return () => clearInterval(timer)
-  }, [])
+      el.style.setProperty("--h", `${safeRandom(8, 32)}px`);
+    }, 250);
 
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!isLoaded) return <div />; // or spinner
+  if (!isSignedIn) return <Navigate to="/login" replace />;
   if (!data) {
     return (
       <main className="min-h-[calc(100vh-4rem)] bg-[#0c0c0c] px-6 py-10">
         <div className="mx-auto max-w-3xl text-center text-gray-300">
           Interview not found.
           <div className="mt-4">
-            <Link to="/dashboard" className="text-emerald-300 hover:text-emerald-200">
+            <Link
+              to="/dashboard"
+              className="text-emerald-300 hover:text-emerald-200"
+            >
               Go back
             </Link>
           </div>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -75,25 +84,29 @@ export default function Interview() {
               </p>
             </div>
             <div className="rounded-md border border-white/10 bg-[#0b0b0b] px-3 py-1 text-sm text-gray-300">
-              {String(minutes).padStart(2, '0')}:{String(remaining).padStart(2, '0')}
+              {String(minutes).padStart(2, "0")}:
+              {String(remaining).padStart(2, "0")}
             </div>
           </div>
-
           <div className="mt-8">
             <div
               ref={waveformRef}
               className="h-40 w-full rounded-md border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-2"
               style={{
                 maskImage:
-                  'radial-gradient(circle at 50% 0%, black 0%, transparent 75%), linear-gradient(to right, black, black)',
+                  "radial-gradient(circle at 50% 0%, black 0%, transparent 75%), linear-gradient(to right, black, black)",
               }}
             >
               <div className="flex h-full items-end gap-1">
-                {Array.from({ length: 80 }).map((_, i) => (
+                {Array.from({ length: 80 }).map(() => (
                   <div
-                    key={i}
+                    key={crypto.randomUUID()}
                     className="w-[6px] flex-1 rounded-sm bg-emerald-500/30"
-                    style={{ height: `calc(var(--h, 16px) * ${(i % 5) + 1})` }}
+                    style={{
+                      height: `calc(var(--h, 16px) * ${Math.floor(
+                        safeRandom(1, 6)
+                      )})`,
+                    }}
                   />
                 ))}
               </div>
@@ -103,13 +116,13 @@ export default function Interview() {
                 onClick={() => setPaused((p) => !p)}
                 className="rounded-md border border-white/10 px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
               >
-                {paused ? 'Resume' : 'Pause'}
+                {paused ? "Resume" : "Pause"}
               </button>
               <button
                 onClick={() => setMuted((m) => !m)}
                 className="rounded-md border border-white/10 px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
               >
-                {muted ? 'Unmute' : 'Mute'}
+                {muted ? "Unmute" : "Mute"}
               </button>
               <button
                 onClick={() => setEnded(true)}
@@ -118,7 +131,6 @@ export default function Interview() {
                 End Interview
               </button>
             </div>
-
             {ended && (
               <div className="mt-6 rounded-md border border-emerald-500/20 bg-emerald-500/10 p-4 text-emerald-300">
                 Interview completed. Redirecting you to the dashboard...
@@ -126,19 +138,20 @@ export default function Interview() {
             )}
           </div>
         </section>
-
         <aside className="rounded-lg border border-white/10 bg-[#0e0e0e] p-6">
           <h2 className="text-sm font-semibold text-white">Transcript</h2>
           <div className="mt-4 h-[420px] overflow-auto rounded-md border border-white/10 bg-[#0b0b0b] p-3 text-sm text-gray-300">
             <p className="text-gray-400">This is a demo transcript panel.</p>
-            {Array.from({ length: 16 }).map((_, i) => (
-              <p key={i} className="mt-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquet vehicula, nisl nunc aliquet nunc, vitae aliquam nunc nisl eu nunc.
+            {Array.from({ length: 16 }).map(() => (
+              <p key={crypto.randomUUID()} className="mt-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                euismod, nunc ut aliquet vehicula, nisl nunc aliquet nunc, vitae
+                aliquam nunc nisl eu nunc.
               </p>
             ))}
           </div>
         </aside>
       </div>
     </main>
-  )
+  );
 }

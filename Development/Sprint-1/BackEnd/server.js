@@ -1,4 +1,4 @@
-import http from "http";
+import http from "node:http";
 import { app } from "./app.js";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
@@ -10,7 +10,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5173', 'https://ai-interviewprepapp.netlify.app'],
+    origin: [
+      "http://localhost:5173",
+      "https://ai-interviewprepapp.netlify.app",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -27,18 +30,14 @@ io.on("connection", (socket) => {
 const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGO_URL;
 
-async function startServer() {
-  try {
-    await mongoose.connect(MONGO_URL);
-    console.log("✅ Connected to MongoDB Atlas");
+try {
+  await mongoose.connect(MONGO_URL);
+  console.log("✅ Connected to MongoDB Atlas");
 
-    server.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
-  } catch (err) {
-    console.error("❌ Startup error:", err);
-    process.exit(1);
-  }
+  server.listen(PORT, "0.0.0.0", () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+} catch (err) {
+  console.error("❌ Startup error:", err);
+  process.exit(1);
 }
-
-startServer();
