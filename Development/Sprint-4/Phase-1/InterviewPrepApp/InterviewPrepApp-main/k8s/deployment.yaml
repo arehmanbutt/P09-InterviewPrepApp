@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: interview-prep-app
+  namespace: interview-prep
+  labels:
+    app: interview-prep
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: interview-prep
+  template:
+    metadata:
+      labels:
+        app: interview-prep
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: interview-prep
+          image: ghcr.io/IMAGE_PLACEHOLDER:TAG_PLACEHOLDER
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          env:
+            - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+              value: pk_test_c3BlY2lhbC1saW9uZmlzaC03NC5jbGVyay5hY2NvdW50cy5kZXYk
+            - name: CLERK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: CLERK_SECRET_KEY
+            - name: MONGO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: MONGO_URL
+            - name: DEEPGRAM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: DEEPGRAM_API_KEY
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: OPENAI_API_KEY
