@@ -1,11 +1,10 @@
 # P09-InterviewPrepApp
 
-Team: Names and ids of team members.
-Abdul Samad 26100314  \ 
+Abdul Samad 26100314 \ 
 Ahmad Bilal 26100251 \
 Abdul Rehman Butt 26100049 \
 Haider Abbas Virk 26100032 \
-Mohammad Shahid Kabli 26100401 \
+Mohammad Shahid Kabli 26100401
 
 
 ------------------------------------------------------------------------------------------------
