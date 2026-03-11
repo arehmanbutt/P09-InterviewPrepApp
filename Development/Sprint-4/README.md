@@ -16,9 +16,10 @@ LIST OF REQUIREMENTS COMPLETED IN THE SPRINT
 - Generated code solutions (Python, JavaScript, C++) for every problem using LLM (Abdul Samad)
 - Created 8 hidden test cases using LLM and corresponding outputs using Piston (Abdul Samad)
 - Added resume parsing for more personalized voice-agent-driven interviews (Abdul Rehman Butt)
+- Session-based coding interview with timers, states, and persistence (Ahmad Bilal)
 - Standalone practice coding questions tab (Ahmad Bilal)
-- Detailed post-coding interview results (Ahmad BIal)
-- System testing (Ahmad Bilal)
+- Detailed post-coding interview results (Shahid Kabli)
+- System testing (Ahmad Bilal, Shahid Kabli, Abdul Rehman, Haider)
 - Implemented CD using Kubernetes (Haider Abbas Virk)
 
 
