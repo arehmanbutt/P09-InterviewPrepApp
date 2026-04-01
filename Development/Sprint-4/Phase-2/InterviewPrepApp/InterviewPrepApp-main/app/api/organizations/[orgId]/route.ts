@@ -1,0 +1,94 @@
+import { NextResponse } from "next/server";
+import { getAuthContext } from "app/lib/auth";
+import { canManageTeam } from "app/lib/permissions";
+import { connectDB } from "app/lib/mongodb";
+import Organization from "app/models/Organization";
+
+export async function GET(_request: Request, { params }: { params: Promise<{ orgId: string }> }) {
+  const { userId, orgId: activeOrgId, orgRole } = await getAuthContext();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { orgId } = await params;
+
+  // User must be in the org they're requesting
+  if (activeOrgId !== orgId) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  await connectDB();
+  let org = await Organization.findOne({ clerkOrgId: orgId });
+
+  // Lazy provisioning — create org record if it doesn't exist
+  if (!org) {
+    org = await Organization.create({ clerkOrgId: orgId });
+  }
+
+  return NextResponse.json({
+    clerkOrgId: org.clerkOrgId,
+    plan: org.plan,
+    seatLimit: org.seatLimit,
+    branding: org.branding,
+    usageStats: org.usageStats,
+    role: orgRole,
+  });
+}
+
+export async function PATCH(request: Request, { params }: { params: Promise<{ orgId: string }> }) {
+  const { userId, orgId: activeOrgId, orgRole } = await getAuthContext();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { orgId } = await params;
+
+  if (activeOrgId !== orgId) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  if (!canManageTeam(orgRole)) {
+    return NextResponse.json(
+      { error: "Only admins can update organization settings" },
+      { status: 403 },
+    );
+  }
+
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  await connectDB();
+
+  const allowedUpdates: Record<string, unknown> = {};
+
+  // Allow updating branding fields
+  if (body.branding && typeof body.branding === "object") {
+    const b = body.branding as Record<string, unknown>;
+    if (typeof b.companyName === "string") allowedUpdates["branding.companyName"] = b.companyName;
+    if (typeof b.primaryColor === "string")
+      allowedUpdates["branding.primaryColor"] = b.primaryColor;
+    if (typeof b.secondaryColor === "string")
+      allowedUpdates["branding.secondaryColor"] = b.secondaryColor;
+    if (typeof b.logoUrl === "string") allowedUpdates["branding.logoUrl"] = b.logoUrl;
+  }
+
+  if (Object.keys(allowedUpdates).length === 0) {
+    return NextResponse.json({ error: "No valid fields to update" }, { status: 400 });
+  }
+
+  const org = await Organization.findOneAndUpdate(
+    { clerkOrgId: orgId },
+    { $set: allowedUpdates },
+    { new: true, upsert: true },
+  );
+
+  return NextResponse.json({
+    clerkOrgId: org.clerkOrgId,
+    plan: org.plan,
+    branding: org.branding,
+  });
+}

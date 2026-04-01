@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Light mode */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 263 70% 50%;
+
+    --radius: 0.6rem;
+
+    /* Brand (org white-label override) */
+    --brand-primary: #6d28d9;
+    --brand-secondary: #ffffff;
+  }
+
+  .dark {
+    /* Dark mode */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 8% 5.5%;
+    --card-foreground: 0 0% 98%;
+
+    --primary: 263 55% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 11%;
+    --secondary-foreground: 240 5% 64.9%;
+
+    --accent: 160 60% 52%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --muted: 240 5% 11%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --destructive: 0 62.8% 70%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 12%;
+    --input: 240 6% 12%;
+    --ring: 263 55% 70%;
+
+    /* Brand (org white-label override) */
+    --brand-primary: #8b5cf6;
+    --brand-secondary: #09090b;
+  }
+}
+
+/* ─── Base Resets ────────────────────────────────────────────────────────────── */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Hidden scrollbar utility */
+.scrollable-element {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollable-element::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Voice interview orb animations (DO NOT REMOVE) ────────────────────────── */
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleDown {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+}
+.scale-up {
+  animation: scaleUp 0.1s forwards;
+}
+.scale-down {
+  animation: scaleDown 0.1s forwards;
+}
+
+.orb-animation {
+  width: 183px;
+  height: 183px;
+  max-height: 30vh;
+}
+.active-order .orb-animation {
+  width: 130px;
+  height: 130px;
+}
+
+@media (min-width: 640px) {
+  .orb-animation {
+    width: 240px;
+    height: 240px;
+  }
+  .active-order .orb-animation {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .orb-animation {
+    width: 421px;
+    height: 421px;
+  }
+  .active-order .orb-animation {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* ─── Gradient border utility ────────────────────────────────────────────────── */
+
+.gradient-border {
+  position: relative;
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.5),
+    hsl(var(--accent) / 0.3),
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── Glass card utility ─────────────────────────────────────────────────────── */
+
+.glass {
+  background: hsl(var(--card) / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border));
+}

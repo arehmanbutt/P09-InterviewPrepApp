@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.github
+.husky
+.vscode
+*.md
+.env*.local
+.claude
+.devcontainer
