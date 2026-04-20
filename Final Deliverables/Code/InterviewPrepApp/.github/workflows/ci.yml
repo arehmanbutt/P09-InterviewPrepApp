@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        env:
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_c3BlY2lhbC1saW9uZmlzaC03NC5jbGVyay5hY2NvdW50cy5kZXYk
+        run: npm run build
+
+  build-and-push:
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/interviewprepapp:latest
+            ghcr.io/${{ github.repository_owner }}/interviewprepapp:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_c3BlY2lhbC1saW9uZmlzaC03NC5jbGVyay5hY2NvdW50cy5kZXYk
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build-and-push
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # required for Workload Identity Federation (future upgrade)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
+          location: ${{ secrets.GKE_CLUSTER_LOCATION }}
+          project_id: ${{ secrets.GKE_PROJECT_ID }}
+
+      - name: Create Docker registry secret
+        run: |
+          kubectl create namespace interview-prep --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create secret docker-registry ghcr-secret \
+            --docker-server=ghcr.io \
+            --docker-username=${{ github.actor }} \
+            --docker-password=${{ secrets.GITHUB_TOKEN }} \
+            --docker-email=user@example.com \
+            -n interview-prep \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Create application secrets
+        run: |
+          kubectl create secret generic interview-prep-secrets \
+            --from-literal=CLERK_SECRET_KEY='${{ secrets.CLERK_SECRET_KEY }}' \
+            --from-literal=CLERK_WEBHOOK_SECRET='${{ secrets.CLERK_WEBHOOK_SECRET }}' \
+            --from-literal=MONGO_URL='${{ secrets.MONGO_URL }}' \
+            --from-literal=DEEPGRAM_API_KEY='${{ secrets.DEEPGRAM_API_KEY }}' \
+            --from-literal=OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' \
+            --from-literal=STRIPE_SECRET_KEY='${{ secrets.STRIPE_SECRET_KEY }}' \
+            --from-literal=STRIPE_WEBHOOK_SECRET='${{ secrets.STRIPE_WEBHOOK_SECRET }}' \
+            --from-literal=STRIPE_PRICE_PRO_MONTHLY='${{ secrets.STRIPE_PRICE_PRO_MONTHLY }}' \
+            --from-literal=STRIPE_PRICE_BUSINESS_MONTHLY='${{ secrets.STRIPE_PRICE_BUSINESS_MONTHLY }}' \
+            --from-literal=UPSTASH_REDIS_REST_URL='${{ secrets.UPSTASH_REDIS_REST_URL }}' \
+            --from-literal=UPSTASH_REDIS_REST_TOKEN='${{ secrets.UPSTASH_REDIS_REST_TOKEN }}' \
+            --from-literal=ADMIN_USER_IDS='${{ secrets.ADMIN_USER_IDS }}' \
+            --from-literal=ENCRYPTION_KEY='${{ secrets.ENCRYPTION_KEY }}' \
+            --from-literal=RESEND_API_KEY='${{ secrets.RESEND_API_KEY }}' \
+            --from-literal=PISTON_API_URL='${{ secrets.PISTON_API_URL }}' \
+            -n interview-prep \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Deploy to Kubernetes
+        run: |
+          IMAGE="ghcr.io/${{ github.repository_owner }}/interviewprepapp:${{ github.sha }}"
+          sed -i "s|ghcr.io/IMAGE_PLACEHOLDER:TAG_PLACEHOLDER|${IMAGE}|g" k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/deployment.yaml
+          kubectl rollout status deployment/interview-prep-app -n interview-prep --timeout=300s

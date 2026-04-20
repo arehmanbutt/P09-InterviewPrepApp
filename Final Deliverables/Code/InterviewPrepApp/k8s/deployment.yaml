@@ -1,0 +1,135 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: interview-prep-app
+  namespace: interview-prep
+  labels:
+    app: interview-prep
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: interview-prep
+  template:
+    metadata:
+      labels:
+        app: interview-prep
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+        - name: interview-prep
+          image: ghcr.io/IMAGE_PLACEHOLDER:TAG_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 2
+          env:
+            - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+              value: pk_live_Y2xlcmsuaW50ZXJ2aWV3cHJlcC5zdHVkaW8k
+            - name: CLERK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: CLERK_SECRET_KEY
+            - name: MONGO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: MONGO_URL
+            - name: DEEPGRAM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: DEEPGRAM_API_KEY
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: OPENAI_API_KEY
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: STRIPE_SECRET_KEY
+            - name: STRIPE_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: STRIPE_WEBHOOK_SECRET
+            - name: STRIPE_PRICE_PRO_MONTHLY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: STRIPE_PRICE_PRO_MONTHLY
+            - name: STRIPE_PRICE_BUSINESS_MONTHLY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: STRIPE_PRICE_BUSINESS_MONTHLY
+            - name: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+              value: pk_test_51TGfwjAhtxv7VVNZtg7VD3sy3YnNYZeaYBO5aMRFWcvqdXRb7EgKWj3xWQlrjnqMUE2E4ynPM0TR0SWC7vAX2okQ00djX1tlio
+            - name: CLERK_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: CLERK_WEBHOOK_SECRET
+            - name: UPSTASH_REDIS_REST_URL
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: UPSTASH_REDIS_REST_URL
+            - name: UPSTASH_REDIS_REST_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: UPSTASH_REDIS_REST_TOKEN
+            - name: ADMIN_USER_IDS
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: ADMIN_USER_IDS
+            - name: ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: ENCRYPTION_KEY
+            - name: RESEND_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: RESEND_API_KEY
+            - name: PISTON_API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: interview-prep-secrets
+                  key: PISTON_API_URL

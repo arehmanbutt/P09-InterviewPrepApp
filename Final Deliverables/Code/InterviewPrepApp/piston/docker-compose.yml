@@ -1,0 +1,35 @@
+# Piston self-hosted code execution engine
+# Deploy this on your VPS with: docker compose up -d
+# Then run ./install-runtimes.sh to install language runtimes.
+#
+# After setup, set in your app's environment:
+#   PISTON_API_URL=http://<vps-ip>:2000
+#
+# Security: firewall port 2000 so only your app server can reach Piston.
+
+version: "3.8"
+
+services:
+  piston:
+    image: ghcr.io/engineer-man/piston
+    container_name: piston
+    restart: unless-stopped
+    ports:
+      - "2000:2000"
+    volumes:
+      - piston_packages:/piston/packages
+    environment:
+      # Allow up to 3 concurrent job runners
+      - PISTON_MAX_CONCURRENT_JOBS=3
+      # Kill jobs that exceed 10 seconds of CPU time
+      - PISTON_RUN_TIMEOUT=10000
+      # Limit output to 65 KB to prevent log flooding
+      - PISTON_OUTPUT_MAX_SIZE=65536
+      # Disable built-in auth (firewall instead — simpler for private VPS)
+      - PISTON_AUTH_TOKEN=
+    # Piston must run as root to manage user namespaces for sandboxing
+    privileged: true
+
+volumes:
+  piston_packages:
+    driver: local
